@@ -1,6 +1,18 @@
 // технический вызов, чтобы можно было считывать данные из консоли
 const prompt = require("readline-sync");
 
+
+/* 
+ * Возвращает случайное целое число от min до max.
+ * Значение не ниже минимума (или следующего целого числа, если min не целое)
+ * Значение не выше max (или предыдущего целого числа, если max не целое) 
+*/
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 class str1 { // стратегия, при которой противник всегда доверяет
     constructor(){
         this.amount_of_money = 0
@@ -14,10 +26,28 @@ class str1 { // стратегия, при которой противник в�
     }
 }
 
+class str2 {
+    constructor(){
+        this.amount_of_money = 0
+        this.action = 'await'
+        this.type = 'liar'
+    }    
+    step(){
+        this.action = 'lie'
+        return this.action
+    }
+}
+
+
 class game {
     constructor(){
         this.player_money = 0;
-        this.ai = new str1();
+        const type = getRandomInt(0, 2)
+        if (type == 0){
+            this.ai = new str1();
+        } else if (type == 1) {
+            this.ai = new str2();
+        }
     }
 
     step() {
