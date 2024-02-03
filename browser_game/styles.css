@@ -1,0 +1,120 @@
+/* Кнопка Начать игру! */
+
+.new_game {
+    appearance: none;
+    border-radius: 5px;
+    position: absolute;
+    width: 412px;
+    height: 71px;
+    left: 233px;
+    top: 32px;
+    background: #BACDEA;
+
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
+    color: #000000;
+}
+
+/* Поле с описанием стратегий */
+
+.strategies_container {
+    position: absolute;
+    width: 279px;
+    height: 982px;
+    left: 1233px;
+    top: 0px;
+    background: #D9D9D9;
+}
+
+/* Поле с описанием предыдущих ходов */
+.steps_container{
+    position: absolute;
+    width: 279px;
+    height: 982px;
+    left: 954px;
+    top: 0px;
+    background: #A9A9A9;
+}
+
+#step_num{
+    /* Шаг № 0 */
+    position: absolute;
+    width: 797px;
+    height: 96px;
+    left: calc(50% - 797px/2 - 319.5px);
+    top: calc(50% - 96px/2 - 234px);
+    font-family: 'Inika';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 63px;
+    text-align: center;
+    color: #000000;
+}
+
+
+.trust_but{
+    /* Кнопка довериться */
+    position: absolute;
+    border-radius:50px;
+    width: 241px;
+    height: 157px;
+    left: 168.5px;
+    top: calc(50% - 157px/2 - 86px);
+    background: #BBE7BB;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #000000;
+
+}
+
+.lie_but{
+    /* Кнопка обмануть*/
+    position: absolute;
+    border-radius:50px;
+    width: 241px;
+    height: 157px;
+    left: 490px;
+    top: 326.33px;
+
+    background: #E0B9B9;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #000000;
+}
+
+#game_score{
+    /* Текущий счет: */
+
+    position: absolute;
+    width: 502px;
+    height: 104px;
+    left: 198px;
+    top: 559px;
+
+    font-family: 'Inika';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 63px;
+    text-align: center;
+
+    color: #000000;
+}
+
+
+
+

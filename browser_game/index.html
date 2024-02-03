@@ -1,19 +1,40 @@
-<!doctype html>
-<html>
-	<head>
-		<title>strategy_guess</title>
-        <h1>Угадай стратегию</h1>
-        <meta charset='utf-8' />
-        <!-- <script type="module" src="browser-game.js"></script>
-		<link rel="stylesheet" href="styles.css">
-		<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet"> -->
-	</head>
-	<body>
-		<div class=e1_3><span  class="e1_4">Выберете ход:</span> 
-		<input type="button" value="ложь" id="new_game" class="e1_6"><br>
-        <input type="button" value="правда" id="new_game" class="e1_6"><br>
-		<canvas id='canvas' width="300" height="300" class="e1_7">Обновите браузер</canvas>
-		<p id="info_text" class="e5_2"></p>
-	</div>
-	</body>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet', href="styles.css">
+    <title>guess the strategy</title>
+</head>
+<body>
+    <div class="start">
+        <input type="button" value="Начать игру!" id="new_game" class="new_game"><br>
+    </div>
+    <div class="help_field">
+        <div class="strategies_container">
+
+        </div>
+        <div class="steps_container">
+
+        </div>
+    </div>
+    <div class="main_field">
+
+        <!-- AAAAAAAAAAAAAAAAAAAA -->
+        <!-- КАРТИНКАМИ НАДО СДЕЛАТЬ -->
+
+
+        <h1 id='step_num'>Шаг № 0</h1>
+        <div class="for-buttons">
+            <input type="button" value="ОБМАНУТЬ" id="new_game" class="trust_but"><br> 
+            <input type="button" value="ДОВЕРИТЬСЯ" id="new_game" class="lie_but"><br>
+        </div> 
+
+        <h2 id="game_score">Текущий счет</h2>
+
+        <div class="houses">
+            <player_house id = "player_house"> -3 </player_house>
+            <ai_house id = "ai_house"> 1 </ai_house>
+        </div>
+    </div>
+</body>
 </html>
