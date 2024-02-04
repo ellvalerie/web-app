@@ -44,7 +44,7 @@
     position: absolute;
     width: 797px;
     height: 96px;
-    left: calc(50% - 797px/2 - 319.5px);
+    left: calc(50% - 797px/2 - 290px);
     top: calc(50% - 96px/2 - 234px);
     font-family: 'Inika';
     font-style: normal;
@@ -83,7 +83,7 @@
     width: 241px;
     height: 157px;
     left: 490px;
-    top: 326.33px;
+    top: calc(50% - 157px/2 - 86px);
 
     background: #E0B9B9;
 
@@ -103,7 +103,7 @@
     width: 502px;
     height: 104px;
     left: 198px;
-    top: 559px;
+    top: 450px;
 
     font-family: 'Inika';
     font-style: normal;
@@ -113,6 +113,23 @@
     text-align: center;
 
     color: #000000;
+}
+
+#player_house{
+    /* Rectangle 4 */
+    position: absolute;
+    width: 129px;
+    height: 153px;
+    left: 221px;
+    top: 600px;
+}
+
+#ai_house{
+    position: absolute;
+    width: 129px;
+    height: 153px;
+    left: calc(50% - 129px/2 - 133.5px);
+    top: 600px;
 }
 
 
