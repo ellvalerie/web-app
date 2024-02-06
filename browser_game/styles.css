@@ -132,6 +132,126 @@
     top: 600px;
 }
 
+.container {
+    height: 400px;
+    width: 400px;
+    position: relative;
+  }
+  #player_house {
+    position: absolute;
+    width: 129px;
+    height: 153px;
+    left: 221px;
+    top: 600px;
+  }
+
+  #score_player {
+    /* счет пользователя */
+    z-index: 100;
+    position: absolute;
+    width: 227px;
+    height: 197px;
+    left: 170px;
+    top: 525px;
+    
+    font-family: 'Inika';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 125px;
+    text-align: center;
+    color: #000000;
+  }
+
+  #text_player{
+    /* Вы */
+
+    position: absolute;
+    width: 76px;
+    height: 59px;
+    left: 246px;
+    top: 730px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+    text-align: center;
+
+    color: #000000;
+
+
+  }
+
+  #ai_house{
+    position: absolute;
+    width: 129px;
+    height: 153px;
+    left: 558px;
+    top: 600px;
+  }
+  
+  #score_ai{
+    z-index: 100;
+    position: absolute;
+    width: 407px;
+    height: 183px;
+    left: 420px;
+    top: 525px;
+
+    font-family: 'Inika';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 125px;
+    text-align: center;
+
+    color: #000000;
+}
+
+#text_ai{
+    /* Противник */
+    position: absolute;
+    width: 245px;
+    height: 51px;
+    left: 502px;
+    top: 730px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+    text-align: center;
+
+    color: #000000;
+}
+
+.form{
+    position: absolute;
+    width: 500px;
+    height: 51px;
+    left: 230px;
+    top: 870px;
+}
+.form_label{
+    position: absolute;
+    top:0;
+    z-index:-1;
+    color: #9e9e9e;
+    transition: 0.3s
+}
+.form_input{
+    width: 93%;
+    border: none;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: transparent;
+    outline: none;
+    transition: 0.3s;
+}
+
+
+
 
 
 

@@ -26,12 +26,27 @@
         </div> 
     </div>
     <div class="score">
-        <h2 id="game_score">Текущий счет</h2>
-
-        <div class="houses">
-            <img src="./imgs/house.png" id="player_house">
-            <img src="./imgs/house.png" id="ai_house">
-        </div>
+        <h2 id="game_score">Текущий счет:</h2>
+        <div class="container">
+            <img id="player_house" src="./imgs/house.png" />
+            <p id="score_player">
+              0
+            </p>
+            <p id="text_player">
+                Вы
+              </p>
+            <img id="ai_house" src="./imgs/house.png" />
+            <p id="score_ai">
+              0
+            </p>
+            <p id="text_ai">
+                Противник
+              </p>
+          </div>
     </div>
+    <form class = "form">
+        <input class = "form_input">
+        <label class = "form_label"> Введите стратегию... </label>
+    </form>
 </body>
 </html>
