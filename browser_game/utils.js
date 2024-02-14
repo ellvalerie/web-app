@@ -1,3 +1,40 @@
+
+
+
+export function getRandomInt(min, max) {
+    /*
+    * Возвращает случайное целое число от min до max (включительно с обоих сторон)
+    * Значение не ниже минимума (или следующего целого числа, если min не целое)
+    * Значение не выше max (или предыдущего целого числа, если max не целое)
+    */
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+
+export function getType(num) {
+    /*
+    * Создает объект противника в зависимости от ном ера полученного типа
+    */
+    if (num === 1) {
+        return new truster();
+    } else if (num === 2) {
+        return new liar();
+    } else if (num === 3) {
+        return new random();
+    } else if (num === 4) {
+        return new copy()
+    } else if (num === 5) {
+        return new vindictive()
+    } else if (num === 6) {
+        return new detective()
+    } else if (num === 7) {
+        return new alternation()
+    }
+}
+
 class opponent_base {
     constructor() {
         this.amount_of_money = 0;
