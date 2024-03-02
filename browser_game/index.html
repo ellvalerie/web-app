@@ -14,20 +14,33 @@
 
     </div>
     <div class="help_field">
+        <!-- описание всех стратегий -->
         <div class="strategies_container">
-
-        </div>
-        <div class="steps_container">
+            <h2 id="strategies_description"> Описание стратегий </h2> <hr>
+            <h3 id='str_detective'> detective: </h3>
+            Противник, который в первые три раунда доверяет пользователю, 
+            если пользователь его хоть раз обманывает, то противник начинает копировать его предыдущий ход, 
+            если же пользователь ни разу его не обманывает, то противник начинает всегда обманывать. <hr>
+            <h3 id='str_truster'> truster: </h3>
+            Противник, который всегда доверяет. <hr>
+            <h3 id='str_liar'> liar: </h3>
+            Противник, который всегда обманывает. <hr>
+            <h3 id='str_copy'> copy: </h3>
+            Противник, который на первом ходе доверяет, а затем начинает копировать предыдущий ход пользователя. <hr>
+            <h3 id='str_vindictive'> vindictive </h3>
+            Противник, который будет доверять пользователю до первого обмана, но после этого начинает всегда обманывать. <hr>
+            <h3 id='str_random'> random: </h3>
+            Противник, который подбрасывает монетку и рандомно выбирает свой следующий ход.<hr>
+            <h3 id='str_alternation'> alternation: </h3>
+            Противник, который чередует доверие с обманом, начиная с обмана. 
 
         </div>
     </div>
     <div class="main_field">
 
         <h1 id='step_num'>Шаг № 0</h1>
-        <div class="for-buttons">
-            <input type="button" value="ДОВЕРИТЬСЯ" id="trust" class="trust_but">
-            <input type="button" value="ОБМАНУТЬ" id="lie" class="lie_but">
-        </div> 
+        <input type="button" value="ДОВЕРИТЬСЯ" id="trust" class="trust_but">
+        <input type="button" value="ОБМАНУТЬ" id="lie" class="lie_but">
     </div>
     <div class="score">
         <h2 id="game_score">Текущий счет:</h2>
@@ -48,9 +61,19 @@
               </p>
           </div>
     </div>
-    <form class = "form">
-        <input class = "form_input">
-        <label class = "form_label"> Введите стратегию... </label>
+
+
+    <!-- Форма для получения ответа -->
+    <form id = "form">
+        <!-- Определены тест по умолчанию, кнопка submit, ответ на введенный ответ (скрыт) -->
+        <label>
+            Стратегия:
+            <input type="text" name = "strategy" placeholder="Введите стратегию">
+         </label>   
+        
+        <button type="submit">Submit</button>
+        <h1 id="response_text">  </h1>
+
     </form>
 </body>
 </html>

@@ -47,6 +47,18 @@ export class game {
         }
     }
 
+    process_answer(ans) {
+        if (ans === this.ai.type) {
+            return true
+        } 
+        return false
+    }
+
+    end_game(){
+        this.player_money = 0;
+        this.ai = NaN
+    }
+
     play() {
         while (true) {
             this.step();
