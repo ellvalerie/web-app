@@ -1,34 +1,36 @@
+.start{
+  position: relative;
+  display: flex; 
+  justify-content: center;
+}
+
 /* Кнопка Начать игру! */
 
-.new_game {
+.new_game{
   appearance: none;
+  width: 200px;
+  height: 50px;
   border-radius: 5px;
-  position: absolute;
-  width: 412px;
-  height: 71px;
-  left: 233px;
-  top: 32px;
   background: #bacdea;
 
   font-family: "Inter";
   font-weight: 500;
-  font-size: 36px;
+  font-size: 30px;
   line-height: 44px;
   text-align: center;
   color: #000000;
 }
 
+/* Текст 'Угадай стратегию!' */
+
 #head_text {
-  position: absolute;
-  width: 412px;
-  height: 71px;
-  left: 233px;
-  top: 32px;
-  font-family: "Inika";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 48px;
-  line-height: 63px;
+  width: 300px;
+  height: 50px;
+  
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 44px;
   text-align: center;
   color: #000000;
   display: none;
@@ -46,19 +48,31 @@
   text-align: center;
 }
 
+.main_field{
+  position: relative;
+  display: flex; 
+  justify-content: center;
+  height: 200px
+}
+
+.buttons{
+  position: absolute;
+  bottom: 0;
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+}
 
 
 #step_num {
   /* Шаг № 0 */
-  position: absolute;
-  width: 797px;
-  height: 96px;
-  left: calc(50% - 797px / 2 - 290px);
-  top: calc(50% - 96px / 2 - 234px);
+  width: 200px;
+  height: 50px;
+
   font-family: "Inika";
   font-style: normal;
   font-weight: 400;
-  font-size: 48px;
+  font-size: 24px;
   line-height: 63px;
   text-align: center;
   color: #000000;
@@ -66,18 +80,15 @@
 
 .trust_but {
   /* Кнопка довериться */
-  position: absolute;
   border-radius: 50px;
-  width: 241px;
-  height: 157px;
-  left: 168.5px;
-  top: calc(50% - 157px / 2 - 86px);
+  width: 175px;
+  height: 100px;
   background: #bbe7bb;
 
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 29px;
 
   color: #000000;
@@ -85,130 +96,122 @@
 
 .lie_but {
   /* Кнопка обмануть*/
-  position: absolute;
   border-radius: 50px;
-  width: 241px;
-  height: 157px;
-  left: 490px;
-  top: calc(50% - 157px / 2 - 86px);
+  width: 175px;
+  height: 100px;
 
   background: #e0b9b9;
 
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 29px;
 
   color: #000000;
 }
 
+.score{
+  position: relative;
+  display: flex; 
+  justify-content: center;
+  height: 240px;
+}
+
 #game_score {
   /* Текущий счет: */
-
-  position: absolute;
-  width: 502px;
-  height: 104px;
-  left: 198px;
-  top: 450px;
+  width: 200px;
+  height: 50px;
 
   font-family: "Inika";
   font-style: normal;
   font-weight: 400;
-  font-size: 48px;
+  font-size: 24px;
   line-height: 63px;
   text-align: center;
-
   color: #000000;
 }
 
-#player_house {
-  /* Rectangle 4 */
+.im_container{
   position: absolute;
-  width: 129px;
-  height: 153px;
-  left: 221px;
-  top: 600px;
+  bottom: 40px;
+  width: 300px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#player_house {
+  width: 100px;
+  height: 100px;
 }
 
 #ai_house {
-  position: absolute;
-  width: 129px;
-  height: 153px;
-  left: calc(50% - 129px / 2 - 133.5px);
-  top: 600px;
-}
-
-.container {
-  height: 100px;
   width: 100px;
-  position: relative;
-}
-#player_house {
-  position: absolute;
-  width: 129px;
-  height: 153px;
-  left: 221px;
-  top: 600px;
+  height: 100px;
 }
 
-#score_player {
+.score_container{
+  position: absolute;
+  bottom: 40px;
+  width: 300px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.score_player {
   /* счет пользователя */
   z-index: 100;
-  position: absolute;
-  width: 227px;
-  height: 197px;
-  left: 170px;
-  top: 525px;
+  width: 100px;
+  height: 100px;
 
   font-family: "Inika";
   font-style: normal;
   font-weight: 400;
-  font-size: 96px;
+  font-size: 60px;
   line-height: 125px;
   text-align: center;
   color: #000000;
+}
+
+
+.score_ai {
+  /* счет ии */
+  z-index: 100;
+  width: 100px;
+  height: 100px;
+
+  font-family: "Inika";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 125px;
+  text-align: center;
+
+  color: #000000;
+}
+
+.text_container{
+  position: absolute;
+  bottom: 0px;
+  width: 300px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #text_player {
   /* Вы */
-
-  position: absolute;
-  width: 76px;
-  height: 59px;
-  left: 246px;
-  top: 730px;
+  width: 100px;
+  height: 40px;
+  margin-top: 0%;
+  margin-bottom: 0%;
 
   font-style: normal;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 31px;
-  text-align: center;
-
-  color: #000000;
-}
-
-#ai_house {
-  position: absolute;
-  width: 129px;
-  height: 153px;
-  left: 558px;
-  top: 600px;
-}
-
-#score_ai {
-  z-index: 100;
-  position: absolute;
-  width: 407px;
-  height: 183px;
-  left: 420px;
-  top: 525px;
-
-  font-family: "Inika";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 96px;
-  line-height: 125px;
   text-align: center;
 
   color: #000000;
@@ -216,20 +219,21 @@
 
 #text_ai {
   /* Противник */
-  position: absolute;
-  width: 245px;
-  height: 51px;
-  left: 502px;
-  top: 730px;
+  width: 100px;
+  height: 40px;
+  margin-top: 0%;
+  margin-bottom: 0%;
 
   font-style: normal;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 31px;
   text-align: center;
 
   color: #000000;
 }
+
+/* Форма с выбором */
 
 #form {
   position: absolute;
