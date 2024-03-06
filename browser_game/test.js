@@ -47,7 +47,7 @@ const form = document.getElementById('form')
 function handleForm(event){
     event.preventDefault() // предотвращает обновление страницы после отправки формы
     // получаем поле формы
-    let answer = form.querySelector('[name = "strategy"]').value
+    let answer = form.querySelector('[id = "strategy"]').value
     console.log(`ввели ${answer}`)
     console.log(answer)
     let stat = gm.process_answer(answer)
@@ -62,8 +62,12 @@ function handleForm(event){
         ai_score.textContent = '0'
     } else {
         response_text.textContent = `Вы ошиблись, это не ${answer}`
+        let block = document.getElementById(`${answer}-block`)
+        var select = document.getElementById('strategy');
+        select.removeChild(select.querySelector(`[id="${answer}"]`));
+        block.style.background = '#d4b0b0b7';
     }
-    response_text.style.display = 'inline';
+    response_text.style.display = 'block';
 }
 
 // при отправке формы срабатывает событие submit

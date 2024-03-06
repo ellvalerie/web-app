@@ -39,13 +39,39 @@
 /* Поле с описанием стратегий */
 
 .strategies_container {
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  width: 279px;
-  height: 982px;
+  width: 270px;
   left: 1233px;
-  top: 0px;
+  top: 8px;
   background: #d9d9d9;
   text-align: center;
+}
+
+#strategies_description{
+  margin:0px;
+  padding:4px;
+  border-style:ridge;
+  border-color: #252424;
+  border-width:1px;
+}
+
+.copy-block, .detective-block, 
+.truster-block, .liar-block, 
+.vindictive-block, .random-block, 
+.alternation-block{
+  border-style:ridge;
+  border-color: #252424;
+  border-width:1px;
+  font-size: 17px;
+}
+
+#str_detective, #str_truster, 
+#str_liar, #str_copy, 
+#str_vindictive, #str_random, 
+#str_alternation{
+  margin: 4px;
 }
 
 .main_field{
@@ -235,15 +261,16 @@
 
 /* Форма с выбором */
 
-#form {
-  position: absolute;
-  width: 500px;
-  height: 96px;
-  left: 198px;
-  top: 850px;
+.answer{
+  position: relative;
+  display: flex; 
+  justify-content: center;
+  height: 200px;
+}
 
+
+#form {
   font-style: normal;
-  font-weight: 400;
   font-size: 24px;
   line-height: 31px;
   text-align: center;
@@ -251,9 +278,14 @@
 
 #response_text {
   display: none;
-  position: absolute;
-  width: 500px;
-  height: 96px;
-  left: 0px;
-  top: 50px;
+  width: 600px;
+  height: 50px;
+  bottom: 0;
+
+  font-family: "Inika";
+  font-style: normal;
+  font-size: 24px;
+  line-height: 63px;
+  text-align: center;
+  color: #000000;
 }

@@ -1,76 +1,112 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <script type="module" src="test.js"></script>
-    <link rel='stylesheet', href="styles.css">
+    <link rel="stylesheet" , href="styles.css" />
     <title>guess the strategy</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="start">
-        <input type="button" value="Начать игру!" id="new_game" class="new_game"><br>
-        <h1 id='head_text'>Угадай стратегию!</h1>
-
+      <input
+        type="button"
+        value="Начать игру!"
+        id="new_game"
+        class="new_game"
+      /><br />
+      <h1 id="head_text">Угадай стратегию!</h1>
     </div>
-    <div class="help_field">
-        <!-- описание всех стратегий -->
-        <div class="strategies_container">
-            <h2 id="strategies_description"> Описание стратегий </h2> <hr>
-            <h3 id='str_detective'> detective: </h3>
-            Противник, который в первые три раунда доверяет пользователю, 
-            если пользователь его хоть раз обманывает, то противник начинает копировать его предыдущий ход, 
-            если же пользователь ни разу его не обманывает, то противник начинает всегда обманывать. <hr>
-            <h3 id='str_truster'> truster: </h3>
-            Противник, который всегда доверяет. <hr>
-            <h3 id='str_liar'> liar: </h3>
-            Противник, который всегда обманывает. <hr>
-            <h3 id='str_copy'> copy: </h3>
-            Противник, который на первом ходе доверяет, а затем начинает копировать предыдущий ход пользователя. <hr>
-            <h3 id='str_vindictive'> vindictive </h3>
-            Противник, который будет доверять пользователю до первого обмана, но после этого начинает всегда обманывать. <hr>
-            <h3 id='str_random'> random: </h3>
-            Противник, который подбрасывает монетку и рандомно выбирает свой следующий ход.<hr>
-            <h3 id='str_alternation'> alternation: </h3>
-            Противник, который чередует доверие с обманом, начиная с обмана. 
+    <aside class="help_field">
+      <!-- описание всех стратегий -->
+      <div class="strategies_container">
+        <h2 id="strategies_description">Описание стратегий</h2>
 
+        <div class="detective-block" id = "detective-block" >
+                <h3 id="str_detective">detective:</h3>
+                Противник, который в первые три раунда доверяет пользователю, если
+                пользователь его хоть раз обманывает, то противник начинает копировать
+                его предыдущий ход, если же пользователь ни разу его не обманывает, то
+                противник начинает всегда обманывать.
         </div>
-    </div>
+
+        <div class="truster-block" id = "truster-block">
+                <h3 id="str_truster">truster:</h3>
+                Противник, который всегда доверяет.
+        </div>
+
+        <div class="liar-block" id = "liar-block">
+                <h3 id="str_liar">liar:</h3>
+                Противник, который всегда обманывает.
+        </div>
+
+        <div class="copy-block" id = "copy-block">
+                <h3 id="str_copy">copy:</h3>
+                Противник, который на первом ходе доверяет, а затем начинает копировать
+                предыдущий ход пользователя.
+        </div>
+
+        <div class="vindictive-block" id = "vindictive-block">
+                <h3 id="str_vindictive">vindictive:</h3>
+                Противник, который будет доверять пользователю до первого обмана, но
+                после этого начинает всегда обманывать.
+        </div>
+
+        <div class="random-block" id = "random-block">
+                <h3 id="str_random">random:</h3>
+                Противник, который подбрасывает монетку и рандомно выбирает свой
+                следующий ход.
+        <div>
+
+        <div class="alternation-block" id = "alternation-block">
+            <h3 id="str_alternation">alternation:</h3>
+            Противник, который чередует доверие с обманом, начиная с обмана.
+        </div>
+      </div>
+    </aside>
     <div class="main_field">
-        <h1 id='step_num'>Шаг № 0</h1>
-        <div class="buttons">
-        <input type="button" value="ДОВЕРИТЬСЯ" id="trust" class="trust_but">
-        <input type="button" value="ОБМАНУТЬ" id="lie" class="lie_but">
-        </div>
+      <h1 id="step_num">Шаг № 0</h1>
+      <div class="buttons">
+        <input type="button" value="ДОВЕРИТЬСЯ" id="trust" class="trust_but" />
+        <input type="button" value="ОБМАНУТЬ" id="lie" class="lie_but" />
+      </div>
     </div>
     <div class="score">
-        <h2 id="game_score">Текущий счет:</h2>
-        <div class="im_container">
-            <img id="player_house" src="./imgs/house.png" />
-            <img id="ai_house" src="./imgs/house.png" />
-        </div>
-        <div class="score_container">
-            <div class="score_player" id="score_player">0</div>
-            <div class="score_ai" id="score_ai">0</div>
-        </div>
-        <div class="text_container">
-            <p id="text_player">Вы</p>
-            <p id="text_ai">Противник</p>
-        </div>
+      <h2 id="game_score">Текущий счет:</h2>
+      <div class="im_container">
+        <img id="player_house" src="./imgs/house.png" />
+        <img id="ai_house" src="./imgs/house.png" />
+      </div>
+      <div class="score_container">
+        <div class="score_player" id="score_player">0</div>
+        <div class="score_ai" id="score_ai">0</div>
+      </div>
+      <div class="text_container">
+        <p id="text_player">Вы</p>
+        <p id="text_ai">Противник</p>
+      </div>
     </div>
 
-
-    <!-- Форма для получения ответа -->
-    <form id = "form">
+    <div class="answer">
+      <!-- Форма для получения ответа -->
+      <form id="form">
         <!-- Определены тест по умолчанию, кнопка submit, ответ на введенный ответ (скрыт) -->
         <label>
-            Стратегия:
-            <input type="text" name = "strategy" placeholder="Введите стратегию">
-         </label>   
-        
-        <button type="submit">Submit</button>
-        <h1 id="response_text">  </h1>
+          Стратегия:
+          <select id="strategy">
+            <option selected hidden>Выберите стратегию</option>
+            <option id="truster">truster</option>
+            <option id="liar">liar</option>
+            <option id="detective">detective</option>
+            <option id="copy">copy</option>
+            <option id="vindictive">vindictive</option>
+            <option id="random">random</option>
+            <option id="alternation">alternation</option>
+          </select>
+        </label>
 
-    </form>
-</body>
+        <button type="submit">Submit</button>
+        <h1 id="response_text">...</h1>
+      </form>
+    </div>
+  </body>
 </html>
