@@ -26,6 +26,7 @@
 #head_text {
   width: 300px;
   height: 50px;
+  margin: 0px;
   
   font-family: "Inter";
   font-weight: 500;
@@ -36,14 +37,31 @@
   display: none;
 }
 
+
+.help_str_field{
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  right: 0px;
+  transform: translateX(270px);
+  transition: 1s;
+  top: 50px;
+  height: 800px;
+  align-items: center;
+}
+/* Кнопка, при нажатии на которую выдвигаются стратегии */
+.str_button{
+  writing-mode: vertical-rl;
+  font-size: 20px;
+  transform: rotate(180deg);
+}
+
 /* Поле с описанием стратегий */
 
 .strategies_container {
   display: flex;
   flex-direction: column;
-  position: absolute;
   width: 270px;
-  left: 1233px;
   top: 8px;
   background: #d9d9d9;
   text-align: center;
@@ -52,19 +70,30 @@
 #strategies_description{
   margin:0px;
   padding:4px;
-  border-style:ridge;
-  border-color: #252424;
-  border-width:1px;
+  border-style: solid;
+  box-sizing: border-box;
+  border-color: gray;
+  border-width:2px;
+  border-left-width: 3px;
+  border-top-width: 3px;
+  border-right-width: 3px;
 }
 
 .copy-block, .detective-block, 
 .truster-block, .liar-block, 
 .vindictive-block, .random-block, 
 .alternation-block{
-  border-style:ridge;
-  border-color: #252424;
-  border-width:1px;
+  border-style: solid ;
+  border-color: gray;
+  box-sizing: border-box;
+  border-width: 2px;
+  border-right-width: 3px;
+  border-left-width: 3px;
   font-size: 17px;
+  transition: background 1s;
+}
+.alternation-block{
+  border-bottom-width: 3px;
 }
 
 #str_detective, #str_truster, 
@@ -74,11 +103,108 @@
   margin: 4px;
 }
 
+
+ /* таблица с моделью */
+.table_container{
+  display: flex;
+  flex-direction: column;
+  left:0px;
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  top: 100px;
+  align-items: center;
+  font-size: 20px;
+}
+
+#table{
+  display: block;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid gray;
+  background: #d9d9d9;
+  margin: 0;
+}
+
+.model-name{
+  font-size: 30px;
+  text-align: center;
+  width: 500px;
+  box-sizing: border-box;
+  background: #d9d9d9;
+  border-top: 3px solid gray;
+  border-left: 3px solid gray;
+  border-right: 3px solid gray;
+}
+
+.model_field{
+  display: flex;
+  flex-direction: row-reverse;
+  left:-500px;
+  position: fixed;
+  width: 530px;
+  height: 300px;
+  top: 100px;
+  align-items: center;
+  font-size: 20px;
+
+  transition:1.5s;
+}
+
+
+.model_button, .graph_button{
+  writing-mode: vertical-rl;
+  font-size: 20px;
+  transform: rotate(180deg);
+}
+
+#zero-zero, #three-m-one, #m-one-three, #two-two{
+  tab-size: 5px;
+  font-size: 48.2px;
+  transition: background 1s;
+}
+
+th, td {
+  padding: 20px;
+}
+
+/* Блок с графиком */
+.graph{
+  display: flex;
+  flex-direction: row-reverse;
+  left: -500px;
+  position: fixed;
+  width: 530px;
+  height: 300px;
+  top: 480px;
+  align-items: center;
+  font-size: 20px;
+  transition:1.5s;
+}
+
+.graph_container{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 300px;
+  align-items: center;
+  font-size: 20px;
+  background: #d9d9d9;
+  box-sizing: border-box;
+  border: 3px solid gray;
+}
+
+
+
 .main_field{
   position: relative;
   display: flex; 
   justify-content: center;
-  height: 200px
+  height: 200px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .buttons{
@@ -142,6 +268,9 @@
   display: flex; 
   justify-content: center;
   height: 240px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #game_score {
@@ -266,6 +395,9 @@
   display: flex; 
   justify-content: center;
   height: 200px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -289,3 +421,5 @@
   text-align: center;
   color: #000000;
 }
+
+

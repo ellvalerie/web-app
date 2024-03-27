@@ -1,4 +1,5 @@
 import {getRandomInt, getType, truster, liar, random, copy, vindictive, detective, alternation} from "./utils.js";
+import { graph } from "./graph.js";
 
 export class game {
     constructor() {
@@ -6,28 +7,37 @@ export class game {
         this.number_of_strategies = 7;
         this.ai = getType(getRandomInt(1, this.number_of_strategies));
         console.log(this.ai.type)
+        this.gr = new graph()
     }
 
     step(player_move) {
         console.log(`Current step: ${this.ai.get_game_cnt() + 1}`)        
         this.ai.strategy();
         const ai_move = this.ai.step();
+        this.ai.update(player_move)
         this.ai.change_game_cnt()
         if (player_move === "trust"){
             if (ai_move === "trust"){
                 this.player_money += 2;
                 this.ai.amount_of_money += 2;
+                this.gr.add(this.ai.amount_of_money, this.player_money, this.ai.get_game_cnt())
+                return 'two-two'
             } else {
                 this.player_money -= 1;
                 this.ai.amount_of_money += 3;
+                this.gr.add(this.ai.amount_of_money, this.player_money, this.ai.get_game_cnt())
+                return 'm-one-three'
             }
         } else if (player_move === "lie"){
             if (ai_move === "trust"){
                 this.player_money += 3;
                 this.ai.amount_of_money -= 1;
+                this.gr.add(this.ai.amount_of_money, this.player_money, this.ai.get_game_cnt())
+                return 'three-m-one'
             } 
+            this.gr.add(this.ai.amount_of_money, this.player_money, this.ai.get_game_cnt())
+            return 'zero-zero'
         }
-        this.ai.update(player_move)
     }
 
     // возвращает счет игры
