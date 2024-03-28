@@ -102,13 +102,18 @@ function handleForm(event){
     let stat = gm.process_answer(answer)
     console.log(stat)
     if (stat) {
-        response_text.textContent = `Вы угадали, это ${answer}!!!`
+        let end_page = document.getElementById('ending')
+        response_text.textContent = ``
+        end_page.style.display = 'block'
+        let end_text = document.getElementById('type')
+        end_text.textContent = `Тип противника был ${answer}.`
+        let end_steps = document.getElementById('steps_num')
+        if (gm.ai.get_game_cnt() < 5){
+            end_steps.textContent = `Вы угадали за ${gm.ai.get_game_cnt()} шагa.`
+        } else {
+            end_steps.textContent = `Вы угадали за ${gm.ai.get_game_cnt()} шагов.`
+        }
         gm.end_game()
-        start_button.style.display = 'inline';
-        head_text.style.display = 'none';
-        step_cnt.textContent = 'Шаг №0'
-        user_score.textContent = '0'
-        ai_score.textContent = '0'
     } else {
         response_text.textContent = `Вы ошиблись, это не ${answer}`
         let block = document.getElementById(`${answer}-block`)

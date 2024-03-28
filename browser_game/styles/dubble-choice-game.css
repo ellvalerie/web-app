@@ -317,7 +317,6 @@ th, td {
 
 .score_player {
   /* счет пользователя */
-  z-index: 100;
   width: 100px;
   height: 100px;
 
@@ -333,7 +332,6 @@ th, td {
 
 .score_ai {
   /* счет ии */
-  z-index: 100;
   width: 100px;
   height: 100px;
 
@@ -422,4 +420,44 @@ th, td {
   color: #000000;
 }
 
+.ending{
+  position: absolute;
+  top:0;
+  bottom: 20%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 500px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #d9d9d9;
+  border: 3px solid gray;
+  transition: 2s;
+  display: none;
+}
 
+#win{
+  font-size: 40px;
+}
+
+#type, #steps_num{
+  font-weight: lighter;
+  font-size: 30px;
+}
+
+.end-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#end-links{
+  display: inline-block; /* Строчно-блочный элемент */
+  background: #bacdea;
+  border: 3px solid gray;
+  padding: 1rem 1.5rem; /* Поля вокруг текста */
+  border-radius: 3px;
+  margin: 10px; /* Скругляем уголки */
+}
