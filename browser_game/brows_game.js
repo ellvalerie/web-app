@@ -14,7 +14,7 @@ function getRandomInt(min, max) {
 
 
 /*
-* Создает объект противника в зависимости от ном ера полученного типа
+* Создает объект противника в зависимости от номера полученного типа
 */
 function getType(num) {
     if (num === 1) {
@@ -24,13 +24,15 @@ function getType(num) {
     } else if (num === 3) {
         return new random();
     } else if (num === 4) {
-        return new copy()
+        return new copy();
     } else if (num === 5) {
-        return new vindictive()
+        return new vindictive();
     } else if (num === 6) {
-        return new detective()
+        return new detective();
     } else if (num === 7) {
-        return new alternation()
+        return new alternation();
+    } else if (num === 8) {
+        return new not_forgiving();
     }
 }
 
@@ -38,7 +40,7 @@ class opponent_base {
     constructor() {
         this.amount_of_money = 0;
         this.action = "await";
-        this.step_num = 0
+        this.step_num = 0;
     }
     // возвращает шаг ии
     step() {
@@ -50,11 +52,11 @@ class opponent_base {
     update(player_step){}
 
     change_game_cnt(){
-        this.step_num += 1
+        this.step_num += 1;
     }
 
     get_game_cnt(){
-        return this.step_num
+        return this.step_num;
     }
 }
 
@@ -187,11 +189,41 @@ class alternation extends opponent_base {
     update(type){}
 }
 
+class not_forgiving extends opponent_base{
+    // противник, который начинает игру с обмана. если пользователь два раза подряд ему доверяет, то он начинает доверять пользователю
+    // если пользователь два раза подряд его обманывает, то он снова начинает обманывать 
+    constructor() {
+        super(opponent_base);
+        this.type = "not_forgiving";
+        this.double_trust_flag = false;
+        this.last_action = "lie";
+    }
+    strategy(){
+        if (this.double_trust_flag) {
+            // если текущий ход является четным, то противник обманывает
+            this.action = "trust"
+        } else {
+            // если текущий ход является нечетным, то противник доверяет
+            this.action = "lie"
+        }
+    }
+    update(player_step){
+        if (player_step === "trust" && this.last_action === "trust"){
+            this.double_trust_flag = true;
+        }
+        else if (player_step === "lie" && this.last_action === "lie"){
+            this.double_trust_flag = false;
+        }
+        this.last_action = player_step
+    }
+}
+
 class game {
     constructor() {
         this.player_money = 0;
-        this.number_of_strategies = 7;
-        this.ai = getType(getRandomInt(1, this.number_of_strategies));
+        this.number_of_strategies = 8;
+        // this.ai = getType(getRandomInt(1, this.number_of_strategies));
+        this.ai = getType(8);
         console.log(this.ai.type)
     }
 

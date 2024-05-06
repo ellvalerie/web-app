@@ -131,10 +131,10 @@ const strategies_button = document.querySelector('#str_button')
 
 function handleStrButton(){
     let str_container = document.getElementById('help_str_field')
-    if (str_container.style.transform == 'translateX(270px)' || str_container.style.transform == ''){
+    if (str_container.style.transform == 'translateX(350px)' || str_container.style.transform == ''){
         str_container.style.transform = 'translateX(0px)'
     } else {
-        str_container.style.transform = 'translateX(270px)'
+        str_container.style.transform = 'translateX(350px)'
     }
 }
 strategies_button.addEventListener('click', handleStrButton)

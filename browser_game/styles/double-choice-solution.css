@@ -1,0 +1,38 @@
+
+#title{
+    text-align: center;
+}
+
+#tree-text, #legend, #description{
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.image-cont{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    bottom: 20px;
+}
+
+#tree-text, #chances {
+    text-align: center;
+    font-weight: bold;
+}
+
+
+#table{
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 2px solid gray;
+    background: #d9d9d9;
+    text-align: center;
+    margin: 0px;
+    margin-left: 5px;
+}
+/* #space{
+    position: relative;
+    height: 10px;
+} */

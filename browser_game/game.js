@@ -1,10 +1,10 @@
-import {getRandomInt, getType, truster, liar, random, copy, vindictive, detective, alternation} from "./utils.js";
+import {getRandomInt, getType, truster, liar, random, copy, vindictive, detective, alternation, not_forgiving} from "./utils.js";
 import { graph } from "./graph.js";
 
 export class game {
     constructor() {
         this.player_money = 0;
-        this.number_of_strategies = 7;
+        this.number_of_strategies = 8;
         this.ai = getType(getRandomInt(1, this.number_of_strategies));
         console.log(this.ai.type)
         this.gr = new graph()
