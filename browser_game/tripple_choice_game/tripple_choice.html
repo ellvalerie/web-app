@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <!--Chart.js JS CDN - библиотека для графиков--> 
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>  -->
+    <script type="importmap">
+      {
+        "imports": {
+          "@kurkle/color": "/node_modules/@kurkle/color/dist/color.esm.js",
+          "chart.js/auto": "/node_modules/chart.js/auto/auto.js"
+        }
+      }
+    </script>
+    <!-- мой скрипт -->
+    <script type="module" src="test.js"></script>
+    <!-- стили -->
+    <link rel="stylesheet" , href="../styles/dubble-choice-game.css"/>
+    <title>guess the strategy</title>
+  </head>
+  <body>
+    <div class="start">
+      <input
+        type="button"
+        value="Начать игру!"
+        id="new_game"
+        class="new_game"
+      /><br />
+      <h1 id="head_text">Угадай стратегию!</h1>
+    </div>
+    <!-- боковая панель с моделью игры -->
+    <aside class="model_field" id="model_field">
+      <!-- кнопка для появления модели -->
+      <input
+      type="button"
+      value="модель"
+      class="model_button"
+      id="model_button"
+    />
+    <div class="table-container">
+      <table border="1" id="table">
+        <div class="model-name">Игровая модель</div>
+        <tr>
+          <td>Вы\Противник</td>
+          <td>ОБМАНУТЬ</td>
+          <td>ДОВЕРИТЬСЯ</td>
+        </tr>
+        <tbody>
+          <tr>
+            <td>ОБМАНУТЬ</td>
+            <td class = 'step' id="zero-zero">+0 +0</td>
+            <td class = 'step' id="three-m-one">+3 -1</td>
+          </tr>
+          <tr>
+            <td>ДОВЕРИТЬСЯ</td>
+            <td class = 'step' id="m-one-three">-1 +3</td>
+            <td class = 'step' id="two-two">+2 +2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </aside>
+    <!-- боковая панель с графиком игры -->
+    <aside class="graph" id = "graph">
+      <!-- кнопка для появления графика -->
+      <input
+      type="button"
+      value="график"
+      class="graph_button"
+      id="graph_button"
+    />
+    <div class="graph_container">
+      <canvas id = "MyChart" width="500px" height="300px">  </canvas>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script> 
+      <script type="text/javascript"> 
+        // создание графика
+
+
+      </script>
+    </div>
+    </aside>
+
+
+    <aside class="help_str_field" id="help_str_field">
+      <!-- описание всех стратегий -->
+      <!-- кнопка для появления поля стратегий -->
+      <input
+        type="button"
+        value="стратегии"
+        class="str_button"
+        id="str_button"
+      />
+      <!-- поле со всеми статегиями  -->
+      <div class="strategies_container" id="strategies_container">
+        <h2 id="strategies_description">Описание стратегий</h2>
+
+        <div class="detective-block" id="detective-block">
+          <h3 id="str_detective">detective:</h3>
+          Противник, который в первые три раунда доверяет пользователю, если
+          пользователь его хоть раз обманывает, то противник начинает копировать
+          его предыдущий ход, если же пользователь ни разу его не обманывает, то
+          противник начинает всегда обманывать.
+        </div>
+
+        <div class="truster-block" id="truster-block">
+          <h3 id="str_truster">truster:</h3>
+          Противник, который всегда доверяет.
+        </div>
+
+        <div class="liar-block" id="liar-block">
+          <h3 id="str_liar">liar:</h3>
+          Противник, который всегда обманывает.
+        </div>
+
+        <div class="copy-block" id="copy-block">
+          <h3 id="str_copy">copy:</h3>
+          Противник, который на первом ходе доверяет, а затем начинает
+          копировать предыдущий ход пользователя.
+        </div>
+
+        <div class="vindictive-block" id="vindictive-block">
+          <h3 id="str_vindictive">vindictive:</h3>
+          Противник, который будет доверять пользователю до первого обмана, но
+          после этого начинает всегда обманывать.
+        </div>
+
+        <div class="random-block" id="random-block">
+          <h3 id="str_random">random:</h3>
+          Противник, который подбрасывает монетку и рандомно выбирает свой
+          следующий ход.
+        </div>
+
+        <div class="alternation-block" id="alternation-block">
+          <h3 id="str_alternation">alternation:</h3>
+          Противник, который чередует доверие с обманом, начиная с обмана.
+        </div>
+        <div class="not_forgiving-block" id="not_forgiving-block">
+          <h3 id="str_not_forgiving">not_forgiving:</h3>
+          Противник, который начинает игру с обмана. если пользователь два раза подряд ему доверяет, то он начинает доверять пользователю 
+          если пользователь два раза подряд его обманывает, то он снова начинает обманывать.
+        </div>
+      </div>
+    </aside>
+    <div class="main_field">
+      <h1 id="step_num">Шаг № 0</h1>
+      <div class="buttons">
+        <input type="button" value="ДОВЕРИТЬСЯ" id="trust" class="trust_but" />
+        <input type="button" value="ОБМАНУТЬ" id="lie" class="lie_but" />
+      </div>
+    </div>
+    <div class="score">
+      <h2 id="game_score">Текущий счет:</h2>
+      <div class="im_container">
+        <img id="player_house" src="../imgs/house.png" />
+        <img id="ai_house" src="../imgs/house.png" />
+      </div>
+      <div class="score_container">
+        <div class="score_player" id="score_player">0</div>
+        <div class="score_ai" id="score_ai">0</div>
+      </div>
+      <div class="text_container">
+        <p id="text_player">Вы</p>
+        <p id="text_ai">Противник</p>
+      </div>
+    </div>
+
+    <div class="answer">
+      <!-- Форма для получения ответа -->
+      <form id="form">
+        <!-- Определены тест по умолчанию, кнопка submit, ответ на введенный ответ (скрыт) -->
+        <label>
+          Стратегия:
+          <select id="strategy">
+            <option selected hidden>Выберите стратегию</option>
+            <option id="truster">truster</option>
+            <option id="liar">liar</option>
+            <option id="detective">detective</option>
+            <option id="copy">copy</option>
+            <option id="vindictive">vindictive</option>
+            <option id="random">random</option>
+            <option id="alternation">alternation</option>
+            <option id="not_forgiving">not_forgiving</option>
+          </select>
+        </label>
+
+        <button type="submit">Submit</button>
+        <h1 id="response_text">...</h1>
+      </form>
+    </div>
+    <div class = 'ending' id = 'ending'>
+      <h2 id="win"> Вы выиграли! </h2>
+      <h3 id = 'type'> Тип противника был ... </h3>
+      <h3 id = 'steps_num'> Вы угадали за ... шагов </h3>
+      <div class="end-buttons">
+        <form action="main-page.html">
+          <input type="submit" value="Главная страница" id = 'end-links'/>
+      </form>
+      <form action="dubble-choice.html">
+        <input type="submit" value="Начать заново" id = 'end-links'/>
+    </form>
+      </div>
+    </div>
+  </body>
+</html>
