@@ -37,6 +37,7 @@
   display: none;
 }
 
+/* Контейнер для бокового поля с описанием всех стратегий */
 
 .help_str_field{
   position: fixed;

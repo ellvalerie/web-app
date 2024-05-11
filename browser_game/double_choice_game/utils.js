@@ -14,9 +14,9 @@ export function getRandomInt(min, max) {
 
 
 
-export function getType(num) {
+export function getTypeDouble(num) {
     /*
-    * Создает объект противника в зависимости от номера полученного типа
+    * Создает объект противника игры с двойным выбором в зависимости от номера полученного типа
     */
     if (num === 1) {
         return new truster();
@@ -37,10 +37,26 @@ export function getType(num) {
     }
 }
 
+export function getTypeTripple(num) {
+    /*
+    * Создает объект противника игры с тройным выбором в зависимости от номера полученного типа
+    */
+   if (num === 1){
+    return new john();
+   } else if (num === 2){
+    return new sam();
+   } else if (num === 3){
+    return new lenny();
+   }
+}
+
 class opponent_base {
+    /*
+    * Базовый класс родитель для любого соперника игры с двойным и тройным выбором 
+    */
     constructor() {
         this.amount_of_money = 0;
-        this.action = "await";
+        this.action = "await"; // действие обозначает начало игры и режим ожидания
         this.step_num = 0
     }
     // возвращает шаг ии
@@ -60,6 +76,11 @@ class opponent_base {
         return this.step_num
     }
 }
+
+/*
+* Стратегии игры с двойным выбором.
+* Возможные действия: trust - довериться и lie - соврать
+*/
 
 export class truster extends opponent_base {
     // стратегия, при которой противник всегда доверяет
@@ -217,4 +238,45 @@ export class not_forgiving extends opponent_base{
         }
         this.last_action = player_step
     }
+}
+
+/*
+* Стратегии для игры с тройным выбором.
+* Возможные действия: up - повысить цену, skip - воздержаться, down - понизить цену
+*/
+
+export class john extends opponent_base {
+    // стратегия, при которой противник всегда понижает цену, независимо от действий игрока
+    constructor() {
+        super(opponent_base);
+        this.type = "John";
+    }
+    strategy() {
+        this.action = "down";
+    }
+    update(player_step){}
+}
+
+export class sam extends opponent_base {
+    // стратегия, при которой противник всегда воздерживается, независимо от действий игрока
+    constructor() {
+        super(opponent_base);
+        this.type = "Sam";
+    }
+    strategy() {
+        this.action = "skip";
+    }
+    update(player_step){}
+}
+
+export class lenny extends opponent_base {
+    // стратегия, при которой противник всегда повыщает цену, независимо от действий игрока
+    constructor() {
+        super(opponent_base);
+        this.type = "Lenny";
+    }
+    strategy() {
+        this.action = "up";
+    }
+    update(player_step){}
 }

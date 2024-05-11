@@ -1,6 +1,6 @@
 import {
   getRandomInt,
-  getType,
+  getTypeDouble,
   truster,
   liar,
   random,
@@ -16,7 +16,7 @@ export class game {
   constructor() {
     this.player_money = 0;
     this.number_of_strategies = 8;
-    this.ai = getType(getRandomInt(1, this.number_of_strategies));
+    this.ai = getTypeDouble(getRandomInt(1, this.number_of_strategies));
     console.log(this.ai.type);
     this.gr = new graph();
   }

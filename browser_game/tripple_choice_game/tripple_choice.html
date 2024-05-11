@@ -13,9 +13,9 @@
       }
     </script>
     <!-- мой скрипт -->
-    <script type="module" src="test.js"></script>
+    <script type="module" src="tripple_choice.js"></script>
     <!-- стили -->
-    <link rel="stylesheet" , href="../styles/dubble-choice-game.css"/>
+    <link rel="stylesheet" , href="../styles/tripple-choice-game.css"/>
     <title>guess the strategy</title>
   </head>
   <body>
@@ -42,19 +42,28 @@
         <div class="model-name">Игровая модель</div>
         <tr>
           <td>Вы\Противник</td>
-          <td>ОБМАНУТЬ</td>
-          <td>ДОВЕРИТЬСЯ</td>
+          <td>ПОВЫСИТЬ</td>
+          <td>ВОЗДЕРЖАТЬСЯ</td>
+          <td>ПОНИЗИТЬ</td>
         </tr>
         <tbody>
           <tr>
-            <td>ОБМАНУТЬ</td>
-            <td class = 'step' id="zero-zero">+0 +0</td>
-            <td class = 'step' id="three-m-one">+3 -1</td>
+            <td>ПОВЫСИТЬ</td>
+            <td class = 'step' id="four-four">+4 +4</td>
+            <td class = 'step' id="m-one-three">-1 +3</td>
+            <td class = 'step' id="m-two-five">-2 +5</td>
           </tr>
           <tr>
-            <td>ДОВЕРИТЬСЯ</td>
-            <td class = 'step' id="m-one-three">-1 +3</td>
-            <td class = 'step' id="two-two">+2 +2</td>
+            <td>ВОЗДЕРЖАТЬСЯ</td>
+            <td class = 'step' id="three-m-one">+3 -1</td>
+            <td class = 'step' id="zero-zero">+0 +0</td>
+            <td class = 'step' id="m-one-and-half">-1.5 +1.5</td>
+          </tr>
+          <tr>
+            <td>ПОНИЗИТЬ</td>
+            <td class = 'step' id="five-m-two">+5 -2</td>
+            <td class = 'step' id="one-and-half">+1.5 -1.5</td>
+            <td class = 'step' id="m-one-m-one">-1 -1</td>
           </tr>
         </tbody>
       </table>
@@ -73,14 +82,9 @@
       <canvas id = "MyChart" width="500px" height="300px">  </canvas>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script> 
       <script type="text/javascript"> 
-        // создание графика
-
-
       </script>
     </div>
     </aside>
-
-
     <aside class="help_str_field" id="help_str_field">
       <!-- описание всех стратегий -->
       <!-- кнопка для появления поля стратегий -->
@@ -94,22 +98,19 @@
       <div class="strategies_container" id="strategies_container">
         <h2 id="strategies_description">Описание стратегий</h2>
 
-        <div class="detective-block" id="detective-block">
-          <h3 id="str_detective">detective:</h3>
-          Противник, который в первые три раунда доверяет пользователю, если
-          пользователь его хоть раз обманывает, то противник начинает копировать
-          его предыдущий ход, если же пользователь ни разу его не обманывает, то
-          противник начинает всегда обманывать.
+        <div class="John-block" id="John-block">
+          <h3 id="str_John">John:</h3>
+          Противник, который всегда понижает цену, независимо от действий игрока.
         </div>
 
-        <div class="truster-block" id="truster-block">
-          <h3 id="str_truster">truster:</h3>
-          Противник, который всегда доверяет.
+        <div class="Sam-block" id="Sam-block">
+          <h3 id="str_Sam">Sam:</h3>
+          Противник, который всегда воздерживается, независимо от действий игрока.
         </div>
 
-        <div class="liar-block" id="liar-block">
-          <h3 id="str_liar">liar:</h3>
-          Противник, который всегда обманывает.
+        <div class="Lenny-block" id="Lenny-block">
+          <h3 id="str_Lenny">Lenny:</h3>
+          Противник всегда повыщает цену, независимо от действий игрока
         </div>
 
         <div class="copy-block" id="copy-block">
@@ -144,8 +145,9 @@
     <div class="main_field">
       <h1 id="step_num">Шаг № 0</h1>
       <div class="buttons">
-        <input type="button" value="ДОВЕРИТЬСЯ" id="trust" class="trust_but" />
-        <input type="button" value="ОБМАНУТЬ" id="lie" class="lie_but" />
+        <input type="button" value="ПОВЫСИТЬ" id="up" class="up_but" />
+        <input type="button" value="ВОЗДЕРЖАТЬСЯ" id="skip" class="skip_but" />
+        <input type="button" value="ПОНИЗИТЬ" id="down" class="down_but" />
       </div>
     </div>
     <div class="score">
@@ -172,9 +174,9 @@
           Стратегия:
           <select id="strategy">
             <option selected hidden>Выберите стратегию</option>
-            <option id="truster">truster</option>
-            <option id="liar">liar</option>
-            <option id="detective">detective</option>
+            <option id="John">John</option>
+            <option id="Sam">Sam</option>
+            <option id="Lenny">Lenny</option>
             <option id="copy">copy</option>
             <option id="vindictive">vindictive</option>
             <option id="random">random</option>
@@ -192,10 +194,10 @@
       <h3 id = 'type'> Тип противника был ... </h3>
       <h3 id = 'steps_num'> Вы угадали за ... шагов </h3>
       <div class="end-buttons">
-        <form action="main-page.html">
+        <form action="../double_choice_game/main-page.html">
           <input type="submit" value="Главная страница" id = 'end-links'/>
       </form>
-      <form action="dubble-choice.html">
+      <form action="tripple_choice.html">
         <input type="submit" value="Начать заново" id = 'end-links'/>
     </form>
       </div>
