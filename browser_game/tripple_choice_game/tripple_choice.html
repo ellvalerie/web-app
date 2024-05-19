@@ -97,49 +97,72 @@
       <!-- поле со всеми статегиями  -->
       <div class="strategies_container" id="strategies_container">
         <h2 id="strategies_description">Описание стратегий</h2>
-
-        <div class="John-block" id="John-block">
-          <h3 id="str_John">John:</h3>
-          Противник, который всегда понижает цену, независимо от действий игрока.
-        </div>
-
-        <div class="Sam-block" id="Sam-block">
-          <h3 id="str_Sam">Sam:</h3>
-          Противник, который всегда воздерживается, независимо от действий игрока.
-        </div>
-
-        <div class="Lenny-block" id="Lenny-block">
-          <h3 id="str_Lenny">Lenny:</h3>
-          Противник всегда повыщает цену, независимо от действий игрока
-        </div>
-
-        <div class="copy-block" id="copy-block">
-          <h3 id="str_copy">copy:</h3>
-          Противник, который на первом ходе доверяет, а затем начинает
-          копировать предыдущий ход пользователя.
-        </div>
-
-        <div class="vindictive-block" id="vindictive-block">
-          <h3 id="str_vindictive">vindictive:</h3>
-          Противник, который будет доверять пользователю до первого обмана, но
-          после этого начинает всегда обманывать.
-        </div>
-
-        <div class="random-block" id="random-block">
-          <h3 id="str_random">random:</h3>
-          Противник, который подбрасывает монетку и рандомно выбирает свой
-          следующий ход.
-        </div>
-
-        <div class="alternation-block" id="alternation-block">
-          <h3 id="str_alternation">alternation:</h3>
-          Противник, который чередует доверие с обманом, начиная с обмана.
-        </div>
-        <div class="not_forgiving-block" id="not_forgiving-block">
-          <h3 id="str_not_forgiving">not_forgiving:</h3>
-          Противник, который начинает игру с обмана. если пользователь два раза подряд ему доверяет, то он начинает доверять пользователю 
-          если пользователь два раза подряд его обманывает, то он снова начинает обманывать.
-        </div>
+        <table border = "1" id = "table_starategies">
+          <tr>
+            <td id="John-block">
+              <h3 id="str_John">John:</h3>
+              Всегда понижает цену, независимо от действий игрока.
+            </td>
+            <td id="Sam-block">
+              <h3 id="str_Sam">Sam:</h3>
+              Всегда воздерживается, независимо от действий игрока.
+            </td>
+          </tr>
+          <tr>
+            <td id="Lenny-block">
+              <h3 id="str_Lenny">Lenny:</h3>
+              Всегда повыщает цену, независимо от действий игрока
+            </td>
+            <td id="Bob-block">
+              <h3 id="str_Bob">Bob:</h3>
+              Повышает до первого понижения, после которого начинает всегда понижать.
+            </td>
+          </tr>
+          <tr>
+            <td id="Matthew-block">
+              <h3 id="str_Matthew">Matthew:</h3>
+              Чередует понижение, воздерживание и повышение, начиная с понижения.
+            </td>
+            <td id="Molly-block">
+              <h3 id="str_Molly">Molly:</h3>
+              Cначала воздерживается, а затем копирует предыдущий ход игрока.
+            </td>
+          </tr>
+          <tr>
+            <td id="Brandon-block">
+              <h3 id="str_Brandon">Brandon:</h3>
+              Подбрасывает монетку и рандомно выбирает свой ход.
+            </td>
+            <td id="Kate-block">
+              <h3 id="str_Kate">Kate:</h3>
+              Пока её счет больше или равен счету игрока, то она воздерживается, 
+              иначе понижает до того момента, пока её счет снова не будет больше или равен.
+            </td>
+          </tr>
+          <tr>
+            <td id="Lesly-block">
+              <h3 id="str_Lesly">Lesly:</h3>
+              Первые 3 раунда воздерживается. Затем в последующих 3 раундах выбирает то, чего было больше
+              в предыдущих 3 раундах. 
+            </td>
+            <td id="Jackson-block">
+              <h3 id="str_Jackson">Jackson:</h3>
+              Первые два раунда повышает, если игрок хоть раз понизил, то следующие два раунда воздерживается, 
+              если игрок снова хоть раз понизил, то он следущие два раунда понижает. Если цикл сбивается, то всё начинается заново.
+            </td>
+          </tr>
+          <tr>
+            <td id="Tomas-block">
+              <h3 id="str_Tomas">Tomas:</h3>
+              Чередует понижение, воздерживание и повышение каждые 2 раунда.
+            </td>
+            <td id="Emily-block">
+              <h3 id="str_Emily">Emily:</h3>
+              Воздерживается, если счет равный, понижает, если количество прибыли у игрока больше
+              и повышает, если количество пробыли у игрока меньше.
+            </td>
+          </tr>
+        </table>
       </div>
     </aside>
     <div class="main_field">
@@ -177,11 +200,15 @@
             <option id="John">John</option>
             <option id="Sam">Sam</option>
             <option id="Lenny">Lenny</option>
-            <option id="copy">copy</option>
-            <option id="vindictive">vindictive</option>
-            <option id="random">random</option>
-            <option id="alternation">alternation</option>
-            <option id="not_forgiving">not_forgiving</option>
+            <option id="Bob">Bob</option>
+            <option id="Matthew">Matthew</option>
+            <option id="Molly">Molly</option>
+            <option id="Brandon">Brandon</option>
+            <option id="Kate">Kate</option>
+            <option id="Lesly">Lesly</option>
+            <option id="Jackson">Jackson</option>
+            <option id="Tomas">Tomas</option>
+            <option id="Emily">Emily</option>
           </select>
         </label>
 

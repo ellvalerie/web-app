@@ -1,4 +1,4 @@
-import { game } from "./game.js";
+import { game } from "../game_class.js";
 import { Chart } from "chart.js/auto";
 
 const start_button = document.querySelector("#new_game");
@@ -48,7 +48,7 @@ function handleStartClick() {
   response_text.style.display = "none";
   head_text.style.display = "inline";
   step_cnt.textContent = "Шаг №1";
-  gm = new game();
+  gm = new game("double_choice");
   updateGraph(gm.gr);
 }
 

@@ -1,4 +1,5 @@
-import { game } from "./tripple_game.js";
+// import { game } from "./tripple_game.js";
+import { game } from "../game_class.js";
 import { Chart } from "chart.js/auto";
 
 const start_button = document.querySelector("#new_game");
@@ -62,7 +63,7 @@ function handleStartClick() {
     response_text.style.display = "none";
     head_text.style.display = "inline";
     step_cnt.textContent = "Шаг №1";
-    gm = new game();
+    gm = new game("tripple_choice");
     updateGraph(gm.gr);
   }
   
@@ -123,16 +124,16 @@ function handleStartClick() {
   
   // при отправке формы срабатывает событие submit
   form.addEventListener("submit", handleForm);
-
+  // Выдвижение таблицы со стратегиями при нажатии кнопки 
   function handleStrButton() {
     let str_container = document.getElementById("help_str_field");
     if (
-      str_container.style.transform == "translateX(350px)" ||
+      str_container.style.transform == "translateX(450px)" ||
       str_container.style.transform == ""
     ) {
       str_container.style.transform = "translateX(0px)";
     } else {
-      str_container.style.transform = "translateX(350px)";
+      str_container.style.transform = "translateX(450px)";
     }
   }
   strategies_button.addEventListener("click", handleStrButton);

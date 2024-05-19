@@ -43,10 +43,9 @@
     display: flex;
     flex-direction: row;
     right: 0px;
-    transform: translateX(350px);
+    transform: translateX(450px);
     transition: 1s;
     top: 50px;
-    height: 800px;
     align-items: center;
   }
   /* Кнопка, при нажатии на которую выдвигаются стратегии */
@@ -54,6 +53,8 @@
     writing-mode: vertical-rl;
     font-size: 20px;
     transform: rotate(180deg);
+    font-family: "Inter";
+    font-weight: 700;
   }
   
   /* Поле с описанием стратегий */
@@ -61,10 +62,11 @@
   .strategies_container {
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 450px;
     top: 0px;
     background: #d9d9d9;
     text-align: center;
+    font-size: 13px;
   }
   
   #strategies_description{
@@ -79,17 +81,18 @@
     border-right-width: 3px;
   }
   
-  .copy-block, .Sam-block, 
+  .Bob-block, .Sam-block, 
   .John-block, .Lenny-block, 
-  .vindictive-block, .random-block, 
-  .alternation-block,.not_forgiving-block{
+  .Matthew-block, .Molly-block, 
+  .Brandon-block,.Kate-block
+  .Lesly-block, .Jackson-block, 
+  .Tomas-block, .Emily-block{
     border-style: solid ;
     border-color: gray;
     box-sizing: border-box;
     border-width: 2px;
     border-right-width: 3px;
     border-left-width: 3px;
-    font-size: 17px;
     transition: background 1s;
   }
   .not_forgiving-block{
@@ -97,10 +100,13 @@
   }
   
   #str_Sam, #str_John, 
-  #str_Lenny, #str_copy, 
-  #str_vindictive, #str_random, 
-  #str_alternation, #str_not_forgiving{
-    margin: 4px;
+  #str_Lenny, #str_Bob, 
+  #str_Matthew, #str_Molly, 
+  #str_Brandon, #str_Kate, 
+  #str_Lesly, #str_Jackson, 
+  #str_Tomas, #str_Emily{
+    margin: 1px;
+    font-size: 16px;
   }
   
 
