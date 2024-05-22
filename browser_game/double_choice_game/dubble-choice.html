@@ -28,7 +28,8 @@
       /><br />
       <h1 id="head_text">Угадай стратегию!</h1>
     </div>
-    <!-- боковая панель с моделью игры -->
+    <!-- боковая панель с моделью игры и графиком-->
+    
     <aside class="model_field" id="model_field">
       <!-- кнопка для появления модели -->
       <input
@@ -38,7 +39,7 @@
       id="model_button"
     />
     <div class="table-container">
-      <table border="1" id="table">
+      <table border="1" id="model_table">
         <div class="model-name">Игровая модель</div>
         <tr>
           <td>Вы\Противник</td>
@@ -70,7 +71,7 @@
       id="graph_button"
     />
     <div class="graph_container">
-      <canvas id = "MyChart" width="500px" height="300px">  </canvas>
+      <canvas id = "MyChart">  </canvas>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script> 
       <script type="text/javascript"> 
         // создание графика
@@ -95,7 +96,13 @@
         <h2 id="strategies_description">Описание стратегий</h2>
 
         <div class="detective-block" id="detective-block">
-          <h3 id="str_detective">detective:</h3>
+          <h3 id="str_detective">detective:
+            <div class = "color">
+              <input type="button" id="red" class="color_but" />
+              <input type="button" id="gray" class="color_but" />
+              <input type="button" id="green" class="color_but" />
+            </div>
+          </h3>
           Противник, который в первые три раунда доверяет пользователю, если
           пользователь его хоть раз обманывает, то противник начинает копировать
           его предыдущий ход, если же пользователь ни разу его не обманывает, то
@@ -155,8 +162,16 @@
         <img id="ai_house" src="../imgs/house.png" />
       </div>
       <div class="score_container">
-        <div class="score_player" id="score_player">0</div>
-        <div class="score_ai" id="score_ai">0</div>
+        <div class="score_player" id="score_player">
+          <text id="score_player_text">
+            0
+          </text>
+        </div>
+        <div class="score_ai" id="score_ai">
+          <text id="score_ai_text">
+            0
+          </text>
+        </div>
       </div>
       <div class="text_container">
         <p id="text_player">Вы</p>

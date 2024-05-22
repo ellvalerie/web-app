@@ -9,16 +9,30 @@ const response_text = document.getElementById("response_text");
 const up_button = document.querySelector("#up");
 const skip_button = document.querySelector("#skip");
 const down_button = document.querySelector("#down");
-const user_score = document.getElementById("score_player");
-const ai_score = document.getElementById("score_ai");
 const form = document.getElementById("form");
-const player_house = document.getElementById("player_house")
-const ai_house = document.getElementById("ai_house")
+const ai_score = document.getElementById("score_ai_text");
+const user_score = document.getElementById("score_player_text")
+const ai_score_size_element = document.getElementById("score_ai");
+const user_score_size_element = document.getElementById("score_player")
 const strategies_button = document.querySelector("#str_button");
 const graph_button = document.querySelector("#graph_button");
 const model_button = document.querySelector("#model_button");
+const logger_button = document.querySelector("#logger_button");
+const logs = document.querySelector("#history")
 var gm;
 var MyChart = null;
+
+
+function checkTextSize(score, score_size_element){
+  // Функция, которая уменьшает размер шрифта, если текст вышел за границу блока
+  // Принимает текст и блок
+  if (score.offsetWidth > score_size_element.offsetWidth){
+    let before = getComputedStyle(score_size_element).getPropertyValue('font-size')
+    let after = Number(before.slice(0, -2)) - 12
+    score_size_element.style.cssText = `font-size:${after}px;`;
+  }
+  console.log(getComputedStyle(score_size_element).getPropertyValue('font-size'))
+}
 
 function updateGraph(gr) {
     /* 
@@ -63,6 +77,8 @@ function handleStartClick() {
     response_text.style.display = "none";
     head_text.style.display = "inline";
     step_cnt.textContent = "Шаг №1";
+    logs.textContent = "Игра началась!"
+    console.log(logs.textContent)
     gm = new game("tripple_choice");
     updateGraph(gm.gr);
   }
@@ -74,8 +90,9 @@ function handleStartClick() {
   function handleChoiceClick(event) {
     let situation = gm.step(event.target.id);
     user_score.textContent = `${gm.player_money}`;
-    // ПОФИКСИТЬ ВЫХОД ТЕКСТА ЗА ГРАНИЦЫ ДОМИКА
+    checkTextSize(user_score, user_score_size_element);
     ai_score.textContent = `${gm.ai.amount_of_money}`;
+    checkTextSize(ai_score, ai_score_size_element);
     step_cnt.textContent = `Шаг №${gm.ai.get_game_cnt() + 1}`;
     let elements = document.getElementsByClassName("step");
     for (let i = 0; i < elements.length; i++) {
@@ -83,6 +100,8 @@ function handleStartClick() {
     }
     document.getElementById(situation).style.background = "#bbe7bb";
     updateGraph(gm.gr);
+    logs.textContent +=  
+    `\n Шаг №${gm.ai.get_game_cnt()}: Ваш ход - ${event.target.id}, ход противника - ${gm.ai.action}.`
   }
   
   up_button.addEventListener("click", handleChoiceClick);
@@ -139,12 +158,13 @@ function handleStartClick() {
   strategies_button.addEventListener("click", handleStrButton);
   
   
-  function handleMGButton(event) {
+  function handleMGLButton(event) {
     let container = document.getElementById("graph")
-    if (event.target.id == "model_button")
-    {
+    if (event.target.id == "model_button"){
         container = document.getElementById("model_field");
-    } 
+    } else if (event.target.id == "logger_button"){
+      container = document.getElementById("logger")
+    }
     if (
       container.style.left == "-500px" ||
       container.style.left == ""
@@ -156,6 +176,7 @@ function handleStartClick() {
     console.log("clicked");
   }
 
-  model_button.addEventListener("click", handleMGButton);
-  graph_button.addEventListener("click", handleMGButton);
+  model_button.addEventListener("click", handleMGLButton);
+  graph_button.addEventListener("click", handleMGLButton);
+  logger_button.addEventListener("click", handleMGLButton);
   

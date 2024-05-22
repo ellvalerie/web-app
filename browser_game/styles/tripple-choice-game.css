@@ -1,7 +1,17 @@
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 .start{
     position: relative;
     display: flex; 
     justify-content: center;
+    width: 20%;
+    left: 40%
   }
 
 /* Кнопка Начать игру! */
@@ -9,6 +19,7 @@
     appearance: none;
     width: 200px;
     height: 50px;
+    top: 2%;
     border-radius: 5px;
     background: #bacdea;
   
@@ -45,7 +56,7 @@
     right: 0px;
     transform: translateX(450px);
     transition: 1s;
-    top: 50px;
+    top: 2%;
     align-items: center;
   }
   /* Кнопка, при нажатии на которую выдвигаются стратегии */
@@ -106,7 +117,6 @@
   #str_Lesly, #str_Jackson, 
   #str_Tomas, #str_Emily{
     margin: 1px;
-    font-size: 16px;
   }
   
 
@@ -118,12 +128,14 @@
     position: absolute;
     width: 500px;
     height: 300px;
-    top: 100px;
+    top: 0%;
     align-items: center;
     font-size: 20px;
   }
   
-  #table{
+  /* таблица с моделью + таблица с описанием всех стратегий */
+  
+  #table, #table_strategies{
     display: block;
     table-layout: fixed;
     width: 100%;
@@ -133,7 +145,7 @@
     margin: 0;
   }
   
-  .model-name{
+  .model-name, #logger-name{
     font-size: 20px;
     text-align: center;
     width: 500px;
@@ -148,10 +160,10 @@
     display: flex;
     flex-direction: row-reverse;
     left:-500px;
+    top: 2%;
     position: fixed;
     width: 530px;
     height: 300px;
-    top: 100px;
     align-items: center;
     font-size: 12px;
     transition:1.5s;
@@ -187,7 +199,7 @@
     position: fixed;
     width: 530px;
     height: 300px;
-    top: 480px;
+    top: 38%;
     align-items: center;
     font-size: 20px;
     transition:1.5s;
@@ -205,9 +217,52 @@
     border: 3px solid gray;
   }
   
-  /* Кнопки для появления модели и графика */
+  /* Логгер с историей ходов */
+
+.logger{
+  position: absolute;
+  display: flex;
+  flex-direction: row-reverse;
+  left:-500px;
+  top: 75%;
+  width: 530px;
+  height: 200px;
+  align-items: center;
+  font-size: 20px;
+  transition:1.5s;
+  bottom: 5%;
+}
+
+.logger_container{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  align-items: center;
+  font-size: 20px;
+}
+
+#history{
+  width: 100%;
+  height: 170px;
+  text-align: center;
+  box-sizing: border-box;
+  background: #d9d9d9;
+  border-top: 3px solid gray;
+  border-left: 3px solid gray;
+  border-right: 3px solid gray;
+  border-bottom: 3px solid gray;
+  overflow-y: scroll;
+  white-space: pre;
+}
+
+
+
+  /* Кнопки для появления модели, графика и логгера*/
   
-  .model_button, .graph_button{
+  .model_button, .graph_button, .logger_button{
     writing-mode: vertical-rl;
     font-size: 20px;
     transform: rotate(180deg);
@@ -225,7 +280,7 @@
     display: flex; 
     justify-content: center;
     height: 200px;
-    width: 500px;
+    width: 30%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -233,7 +288,7 @@
   .buttons{
     position: absolute;
     bottom: 0;
-    width: 550px;
+    width: 400px;
     display: flex;
     justify-content: space-between;
   }
@@ -257,9 +312,9 @@
   .skip_but, 
   .down_but {
     border-radius: 50px;
-    width: 175px;
-    height: 90px;
-    font-size: 18px;
+    width: 120px;
+    height: 70px;
+    font-size: 13px;
     line-height: 29px;
     color: #000000;
     font-family: "Inter";
@@ -290,7 +345,7 @@
     display: flex; 
     justify-content: center;
     height: 240px;
-    width: 500px;
+    width: 30%;
     margin-left: auto;
     margin-right: auto;
   }

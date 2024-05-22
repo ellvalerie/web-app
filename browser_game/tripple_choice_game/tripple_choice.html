@@ -85,6 +85,19 @@
       </script>
     </div>
     </aside>
+    <aside class="logger" id = "logger">
+      <input
+      type="button"
+      value="логгер"
+      class="logger_button"
+      id="logger_button"
+    />
+      <div class = "logger-container">
+        <div id="logger-name">История ходов</div>
+        <div id = "history"> Игра еще не началась
+        </div>
+      </div>
+    </aside>
     <aside class="help_str_field" id="help_str_field">
       <!-- описание всех стратегий -->
       <!-- кнопка для появления поля стратегий -->
@@ -97,7 +110,7 @@
       <!-- поле со всеми статегиями  -->
       <div class="strategies_container" id="strategies_container">
         <h2 id="strategies_description">Описание стратегий</h2>
-        <table border = "1" id = "table_starategies">
+        <table border = "1" id = "table_strategies">
           <tr>
             <td id="John-block">
               <h3 id="str_John">John:</h3>
@@ -111,7 +124,7 @@
           <tr>
             <td id="Lenny-block">
               <h3 id="str_Lenny">Lenny:</h3>
-              Всегда повыщает цену, независимо от действий игрока
+              Всегда повыщает цену, независимо от действий игрока.
             </td>
             <td id="Bob-block">
               <h3 id="str_Bob">Bob:</h3>
@@ -180,8 +193,16 @@
         <img id="ai_house" src="../imgs/house.png" />
       </div>
       <div class="score_container">
-        <div class="score_player" id="score_player">0</div>
-        <div class="score_ai" id="score_ai">0</div>
+        <div class="score_player" id="score_player">
+          <text id="score_player_text">
+            0
+          </text>
+          </div>
+        <div class="score_ai" id="score_ai">
+          <text id="score_ai_text">
+            0
+          </text>
+        </div>
       </div>
       <div class="text_container">
         <p id="text_player">Вы</p>
