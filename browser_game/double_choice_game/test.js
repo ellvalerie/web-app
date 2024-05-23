@@ -5,6 +5,8 @@ const start_button = document.querySelector("#new_game");
 const step_cnt = document.getElementById("step_num");
 const head_text = document.getElementById("head_text");
 const response_text = document.getElementById("response_text");
+const logger_button = document.querySelector("#logger_button");
+const logs = document.querySelector("#history")
 var gm;
 var MyChart = null;
 
@@ -32,7 +34,7 @@ function updateGraph(gr) {
         tension: 0.1,
       },
       {
-        label: "Количество очков у противника",
+        label: "Количество очков у бота",
         data: gr.get_ai_score(),
         fill: false,
         borderColor: "rgb(220, 20, 60)",
@@ -58,6 +60,7 @@ function handleStartClick() {
   response_text.style.display = "none";
   head_text.style.display = "inline";
   step_cnt.textContent = "Шаг №1";
+  logs.textContent = "Игра началась!"
   gm = new game("double_choice");
   updateGraph(gm.gr);
 }
@@ -66,14 +69,14 @@ start_button.addEventListener("click", handleStartClick);
 
 const trust_button = document.querySelector("#trust");
 const lie_button = document.querySelector("#lie");
-// const user_score = document.getElementById("score_player");
 const ai_score = document.getElementById("score_ai_text");
 const user_score = document.getElementById("score_player_text")
 const ai_score_size_element = document.getElementById("score_ai");
 const user_score_size_element = document.getElementById("score_player")
 
-function handleTrustClick() {
-  let situation = gm.step("trust");
+
+function handleChoiceClick(event) {
+  let situation = gm.step(event.target.id);
   user_score.textContent = `${gm.player_money}`;
   checkTextSize(user_score, user_score_size_element);
   ai_score.textContent = `${gm.ai.amount_of_money}`;
@@ -85,26 +88,12 @@ function handleTrustClick() {
   }
   document.getElementById(situation).style.background = "#bbe7bb";
   updateGraph(gm.gr);
+  logs.textContent +=  
+  `\n Шаг №${gm.ai.get_game_cnt()}: Ваш ход - ${event.target.id}, ход противника - ${gm.ai.action}.`
 }
 
-trust_button.addEventListener("click", handleTrustClick);
-
-function handleLieClick() {
-  let situation = gm.step("lie");
-  user_score.textContent = `${gm.player_money}`;
-  checkTextSize(user_score, user_score_size_element);
-  ai_score.textContent = `${gm.ai.amount_of_money}`;
-  checkTextSize(ai_score, ai_score_size_element);
-  step_cnt.textContent = `Шаг №${gm.ai.get_game_cnt() + 1}`;
-  let elements = document.getElementsByClassName("step");
-  for (let i = 0; i < elements.length; i++) {
-    elements[i].style.background = "#d9d9d9";
-  }
-  document.getElementById(situation).style.background = "#bbe7bb";
-  updateGraph(gm.gr);
-}
-
-lie_button.addEventListener("click", handleLieClick);
+trust_button.addEventListener("click", handleChoiceClick);
+lie_button.addEventListener("click", handleChoiceClick);
 
 const form = document.getElementById("form");
 
@@ -131,6 +120,7 @@ function handleForm(event) {
     gm.end_game();
   } else {
     response_text.textContent = `Вы ошиблись, это не ${answer}`;
+    logs.textContent += `\n Вы ошиблись, это не ${answer}`
     let block = document.getElementById(`${answer}-block`);
     var select = document.getElementById("strategy");
     select.removeChild(select.querySelector(`[id="${answer}"]`));
@@ -157,35 +147,32 @@ function handleStrButton() {
 }
 strategies_button.addEventListener("click", handleStrButton);
 
-function handleModelButton() {
-  let model_container = document.getElementById("model_field");
-  if (
-    model_container.style.left == "-400px" ||
-    model_container.style.left == ""
-  ) {
-    model_container.style.left = "0px";
-  } else {
-    model_container.style.left = "-400px";
-  }
-  console.log("clicked");
-}
-model_button.addEventListener("click", handleModelButton);
-
 const graph_button = document.querySelector("#graph_button");
+const model_button = document.querySelector("#model_button");
 
-function handleGraphButton() {
-  let graph_container = document.getElementById("graph");
+function handleMGLButton(event) {
+  let container = document.getElementById("graph")
+  if (event.target.id == "model_button"){
+      container = document.getElementById("model_field");
+  } else if (event.target.id == "logger_button"){
+    container = document.getElementById("logger")
+  }
   if (
-    graph_container.style.left == "-400px" ||
-    graph_container.style.left == ""
+    container.style.left == "-30%" ||
+    container.style.left == ""
   ) {
-    graph_container.style.left = "0px";
+    container.style.left = "0";
   } else {
-    graph_container.style.left = "-400px";
+    container.style.left = "-30%";
   }
   console.log("clicked");
 }
-graph_button.addEventListener("click", handleGraphButton);
+
+model_button.addEventListener("click", handleMGLButton);
+graph_button.addEventListener("click", handleMGLButton);
+logger_button.addEventListener("click", handleMGLButton);
+
+
 
 const red_buttn = document.getElementById("red")
 const green_buttn = document.getElementById("green")
