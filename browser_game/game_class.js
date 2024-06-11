@@ -1,10 +1,10 @@
 import {
-    getRandomInt,
+    getRandomInt, 
     getTypeTripple,
     getTypeDouble
   } 
-  from "./double_choice_game/utils.js";
-import { graph } from "./double_choice_game/graph.js"
+  from "./utils.js";
+import { graph } from "./graph.js"
   
   export class game {
     constructor(game_type) {
@@ -34,6 +34,7 @@ import { graph } from "./double_choice_game/graph.js"
 
         // обновление счета в игре двойным выбором
         if (this.game_type === "double_choice") {
+            // в зависимости от выбранных ходов изменяется счет игрока и бота
             if (player_move === "trust") {
                 if (ai_move === "trust") {
                     this.player_money += 2;
@@ -53,6 +54,7 @@ import { graph } from "./double_choice_game/graph.js"
                     situation = "zero-zero";
                 }
             }
+        // обновление счета в игре с тройным выбором    
         } else if (this.game_type === "tripple_choice") {
             if (player_move === "up") {
                 if (ai_move === "up") {
@@ -76,8 +78,8 @@ import { graph } from "./double_choice_game/graph.js"
                 } else if (ai_move === "skip") {
                     situation = "zero-zero";
                 } else if (ai_move === "down") {
-                    this.player_money -= 1.5;
-                    this.ai.amount_of_money += 1.5;
+                    this.player_money -= 1;
+                    this.ai.amount_of_money += 1;
                     situation = "m-one-and-half";
                 }
             } else if (player_move === "down") {
@@ -86,12 +88,12 @@ import { graph } from "./double_choice_game/graph.js"
                     this.ai.amount_of_money -= 2;
                     situation = "five-m-two"
                 } else if (ai_move === "skip") {
-                    this.player_money += 1.5;
-                    this.ai.amount_of_money -= 1.5;
+                    this.player_money += 1;
+                    this.ai.amount_of_money -= 1;
                     situation = "one-and-half";
                 } else if (ai_move === "down") {
-                    this.player_money -= 1;
-                    this.ai.amount_of_money -= 1;
+                    this.player_money -= 0.5;
+                    this.ai.amount_of_money -= 0.5;
                     situation = "m-one-m-one"
                 }
             }
@@ -108,10 +110,8 @@ import { graph } from "./double_choice_game/graph.js"
     }
 
     process_answer(ans) { 
-    /* 
-    Функция, обрабатывающая ответ пользователя, не завивсит от типа игры.
-    Возвращает true, если пользователь угадал стратегию, false иначе.
-    */
+    // Функция, обрабатывающая ответ пользователя, не завивсит от типа игры.
+    // Возвращает true, если пользователь угадал стратегию, false иначе.
     if (ans === this.ai.type) {
         return true;
       }
@@ -119,9 +119,7 @@ import { graph } from "./double_choice_game/graph.js"
     }
 
     end_game() {
-    /*
-    Функция, завершающая игру, не зависит от типа игры.
-    */
+    // Функция, завершающая игру, не зависит от типа игры.
       this.player_money = 0;
       this.ai = NaN;
     }

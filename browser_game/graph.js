@@ -14,13 +14,17 @@ export class graph{
         this.steps.push(step)
     }
 
+    // методы получения игровой информации, нужной для построения графика
     get_ai_score(){
+        // вернуть счет бота
         return this.ai_score
     }
     get_player_score(){
+        // вернуть счет игрока
         return this.player_score
     }
     get_steps(){
+        // вернуть количество прошедших шагов
         return this.steps
     }
 }

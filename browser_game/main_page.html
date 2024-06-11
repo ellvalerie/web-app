@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <!-- скрипт для главной страницы -->
     <script type="module" src="main_page.js"></script>
-    <link rel="stylesheet", href="../styles/main-page.css"/>
+    <link rel="stylesheet", href="./styles/main_page.css"/>
     <title>main page</title>
   </head>
 
@@ -105,8 +105,8 @@
             Также предоставлен вариант выборов - дерево решений с минимальной глубиной.
           </text>
         <div class="dubble-choice-links" id="dubble-choice-links">
-          <a href="dubble-choice.html" class="links"> Dubble Choice Model</a>
-          <a href="solve-double-choice.html" class="links"> Решение модели Dubble Choice Model</a>
+          <a href="./double_choice_game/double_choice.html" class="links"> Double Choice Model</a>
+          <a href="./double_choice_game/double_game_solution.html" class="links"> Решение модели Double Choice Model</a>
         </div>
         <text id="triple_description">
           Усложним игру, представим рынок товара со спросом, близким к совершенно неэластичному. На этом рынке существуют две компании-производители товара, которые конкурируют между собой.
@@ -150,13 +150,13 @@
                     <td>ВОЗДЕРЖАТЬСЯ</td>
                     <td class = 'step'>+3 -1</td>
                     <td class = 'step'>+0 +0</td>
-                    <td class = 'step'>-1.5 +1.5</td>
+                    <td class = 'step'>-1 +1</td>
                   </tr>
                   <tr>
                     <td>ПОНИЗИТЬ</td>
                     <td class = 'step'>+5 -2</td>
-                    <td class = 'step'>+1.5 -1.5</td>
-                    <td class = 'step'>-1 -1</td>
+                    <td class = 'step'>+1 -1</td>
+                    <td class = 'step'>-0.5 -0.5</td>
                   </tr>
                 </tbody>
               </table>
@@ -165,7 +165,7 @@
         Немного о модели. <br> <br>
         Эта модель эквивалента расширенной версии дилеммы заключенного для тройного выбора. Действительно, выбирая 
         одновременно и не зная выбора друг друга, обоим игрокам выгоднее всего будет понижать цену, из-за чего в результате
-        игра прийдет в ситуацию -1, -1, которая не является оптимальной по Парето в данной модели, так как есть ситуации +0, +0 
+        игра прийдет в ситуацию -0.5, -0.5, которая не является оптимальной по Парето в данной модели, так как есть ситуации +0, +0 
         и +4, +4. <br>
         В этой игре Вам также нужно будет отгдать стратегию, которую использует противник. 
         <div class = "triple-strategies">
@@ -210,7 +210,7 @@
                     <button id = "jackson-img-button"> 
                       Показать картинку 
                     </button>
-                    <img id="jackson-img" src="../imgs/jackson_str.jpg" />
+                    <img id="jackson-img" src="./imgs/jackson_str.jpg" />
                   </div>
                 </td>
                 <td>Противник, который чередует понижение, воздерживание и повышение каждые 2 раунда. <br>
@@ -223,8 +223,8 @@
           </div>
         </text>
         <div class="triple-choice-links">
-          <a href="../tripple_choice_game/tripple_choice.html" class="links"> Tripple choice model</a>
-          <a href="#" class="links"> Решение модели Tripple Choice Model</a>
+          <a href="./triple_choice_game/triple_choice.html" class="links"> Triple choice model</a>
+          <a href="./triple_choice_game/triple_game_solution.html" class="links"> Решение модели Triple Choice Model</a>
         </div>  
     </body>
 </html>

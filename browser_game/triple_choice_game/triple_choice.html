@@ -13,9 +13,9 @@
       }
     </script>
     <!-- мой скрипт -->
-    <script type="module" src="tripple_choice.js"></script>
+    <script type="module" src="triple_choice.js"></script>
     <!-- стили -->
-    <link rel="stylesheet" , href="../styles/tripple-choice-game.css"/>
+    <link rel="stylesheet" , href="../styles/triple_choice_game.css"/>
     <title>guess the strategy</title>
   </head>
   <body>
@@ -57,13 +57,13 @@
             <td>ВОЗДЕРЖАТЬСЯ</td>
             <td class = 'step' id="three-m-one">+3 -1</td>
             <td class = 'step' id="zero-zero">+0 +0</td>
-            <td class = 'step' id="m-one-and-half">-1.5 +1.5</td>
+            <td class = 'step' id="m-one-and-half">-1 +1</td>
           </tr>
           <tr>
             <td>ПОНИЗИТЬ</td>
             <td class = 'step' id="five-m-two">+5 -2</td>
-            <td class = 'step' id="one-and-half">+1.5 -1.5</td>
-            <td class = 'step' id="m-one-m-one">-1 -1</td>
+            <td class = 'step' id="one-and-half">+1 -1</td>
+            <td class = 'step' id="m-one-m-one">-0.5 -0.5</td>
           </tr>
         </tbody>
       </table>
@@ -138,7 +138,7 @@
             </td>
             <td id="Molly-block">
               <h3 id="str_Molly">Molly:</h3>
-              Cначала воздерживается, а затем копирует предыдущий ход игрока.
+              Cначала воздерживается, а затем а затем копирует предыдущий ход игрока.
             </td>
           </tr>
           <tr>
@@ -242,10 +242,10 @@
       <h3 id = 'type'> Тип противника был ... </h3>
       <h3 id = 'steps_num'> Вы угадали за ... шагов </h3>
       <div class="end-buttons">
-        <form action="../double_choice_game/main-page.html">
+        <form action="../main_page.html">
           <input type="submit" value="Главная страница" id = 'end-links'/>
       </form>
-      <form action="tripple_choice.html">
+      <form action="triple_choice.html">
         <input type="submit" value="Начать заново" id = 'end-links'/>
     </form>
       </div>

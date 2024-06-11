@@ -1,10 +1,15 @@
 html, body {
+  /* разворачиваем поля страницы на весь экран */
   width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
+  /* отступ сверху */
+  margin-top: 1%;
 }
 
+
+/* контейнер с кнопкой "Начать игру" и текстом "Угадай стратегию" */
 .start{
   position: relative;
   display: flex; 
@@ -34,7 +39,7 @@ html, body {
 /* Текст 'Угадай стратегию!' */
 
 #head_text {
-  width: 80%;
+  width: 100%;
   margin: 0px;
   
   font-family: "Inter";
@@ -147,7 +152,7 @@ html, body {
 /* таблица с моделью */
 
 .model_field{
-  top:2%; /* указание отступа от верха страницы */
+  top: 2%; /* указание отступа от верха страницы */
   width: 32%;
   height: 35%;
   left: -30%;

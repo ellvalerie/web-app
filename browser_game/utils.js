@@ -82,9 +82,11 @@ class opponent_base {
         return this.action;
     }
 
-    strategy(){}
+    // определение хода на каждом шаге
+    strategy(){} // метод определяется у дочерних классов отдельно, потому что зависит от стратегии - полиморфизм
 
-    update(player_step, player_money){}
+    // обновление информации об игре, которую хранит объект класса
+    update(player_step, player_money){} // метод определяется у дочерних классов отдельно, потому что зависит от стратегии - полиморфизм
 
     change_game_cnt(){
         this.step_num += 1
@@ -129,8 +131,8 @@ class random extends opponent_base {
         this.type = "random";
     }
     strategy() {
-        const option = getRandomInt(0, 1);
-        if (option === 0) {
+        const option = getRandomInt(0, 1); // рандомно выбирается число
+        if (option === 0) { // в зависимости от рандомного числа определяется ход 
             this.action = "lie";
         } else {
             this.action = "trust";
@@ -143,17 +145,17 @@ class copy extends opponent_base {
     constructor(){
         super(opponent_base);
         this.type = "copy";
-        this.last_action = "await"
+        this.last_action = "await" // поле, в котором храниться предыдущий шаг пользователя
     }
     strategy() {       
-        if (this.step_num === 0){
+        if (this.step_num === 0){ // на первом шаге противник доверяет
             this.action = "trust"
         } else {
-            this.action = this.last_action
+            this.action = this.last_action // затем копирует предыдущий шаг пользователя
         } 
     }
     update(player_step, player_money){
-        this.last_action = player_step;
+        this.last_action = player_step; // запоминание иинформации о шаге пользователя
     }
 }
 
@@ -163,8 +165,8 @@ class vindictive extends opponent_base {
     */
     constructor(){
         super(opponent_base);
-        this.type = "vindictive"
-        this.lie_flag = false        
+        this.type = "vindictive";
+        this.lie_flag = false; // флаг первого обмана
     }
     strategy(){
         if (this.lie_flag === false){
@@ -173,7 +175,7 @@ class vindictive extends opponent_base {
             this.action = "lie";
         }
     }
-    update(player_step, player_money){
+    update(player_step, player_money){ // обновление флага во время игры, проверка хода пользователя на Обман
         if (player_step === "lie" && !this.lie_flag){
             this.lie_flag = true;
         }
@@ -189,10 +191,10 @@ class detective extends opponent_base {
         super(opponent_base);
         this.type = "detective";
         this.last_action = "await"
-        this.three_step_flag = false
+        this.three_step_flag = false // флаг обмана от игрока в первые 3 хода
     }
     strategy(){
-        if (this.step_num < 3){
+        if (this.step_num < 3){ // в первые три хода противник доверяет
             this.action = "trust"
         } else if (this.three_step_flag) { // пользователь обманул в один из первых трех шагов
             this.action = this.last_action;
@@ -201,9 +203,11 @@ class detective extends opponent_base {
         }
     }
     update(player_step, player_money){
+        // обновление флага
         if (player_step === "lie" && this.step_num < 3 && !this.three_step_flag){
-            this.three_step_flag = true;
+            this.three_step_flag = true; 
         }
+        // запоминание хода пользователя
         this.last_action = player_step
     }
 
@@ -232,19 +236,20 @@ class not_forgiving extends opponent_base{
     constructor() {
         super(opponent_base);
         this.type = "not_forgiving";
-        this.double_trust_flag = false;
+        this.double_trust_flag = false; // флаг доверия пользователя два шага подряд 
+        // значение false в начале игры и, если пользователь два раза подряд обманывает
         this.last_action = "lie";
     }
     strategy(){
         if (this.double_trust_flag) {
-            // если текущий ход является четным, то противник обманывает
+            // если пользователь два раза подряд доверился, то стратегия доверяет
             this.action = "trust"
         } else {
-            // если текущий ход является нечетным, то противник доверяет
             this.action = "lie"
         }
     }
     update(player_step, player_money){
+        // изменение флага
         if (player_step === "trust" && this.last_action === "trust"){
             this.double_trust_flag = true;
         }
@@ -298,7 +303,7 @@ class molly extends opponent_base {
     constructor() {
         super(opponent_base);
         this.type = "Molly";
-        this.last_action = "await";
+        this.last_action = "await"; // поле, содержащее предыдущий ход игрока
     }
     strategy() {       
         if (this.step_num === 0){
@@ -308,16 +313,15 @@ class molly extends opponent_base {
         } 
     }
     update(player_step, player_money){
-        this.last_action = player_step;
+        this.last_action = player_step; // бновление предыдущего хода
     }
 }
-
 class bob extends opponent_base {
     // стратегия, при которой противник повышает до первого понижения, после которого начинает всегда понижать
     constructor() {
         super(opponent_base);
         this.type = "Bob";
-        this.down_flag = false;
+        this.down_flag = false; // флаг первого понижения
     }
     strategy() {       
         if (this.down_flag){
@@ -328,7 +332,7 @@ class bob extends opponent_base {
     }
     update(player_step, player_money){
         if (player_step === "down"){
-            this.down_flag = true;
+            this.down_flag = true; // обновление флага, достаточно обновить один раз, чтобы противник всегда начал обманывать
         }
     }
 }
@@ -340,6 +344,7 @@ class matthew extends opponent_base {
         this.type = "Matthew";
     }
     strategy(){
+        // чередование по остатку номера шага от целочисленного деления на 3
         if (this.step_num % 3 === 0){
             this.action = "down";
         } else if (this.step_num % 3 === 1){
@@ -357,7 +362,8 @@ class brandon extends opponent_base {
         this.type = "Brandon";
     }
     strategy(){
-        let rand = getRandomInt(1, 3);
+        let rand = getRandomInt(1, 3); // возвращается рандомное число от 1 до 3 включительно
+        // в зависимости от полученного числа определяется стратегия
         if (rand === 1){
             this.action = "up";
         } else if (rand === 2){
@@ -377,13 +383,13 @@ class kate extends opponent_base {
         this.player_money = 0;
     }
     strategy(){
-        if (this.amount_of_money >= this.player_money){
-            this.action = "skip";
-        } else {
+        if (this.amount_of_money >= this.player_money){ // счет бота больше или равен 
+            this.action = "skip"; // бот воздерживается
+        } else { // иначе понижает
             this.action = "down";
         }
     }
-    update(player_step, player_money){
+    update(player_step, player_money){ // запоминается счет игрока
         this.player_money = player_money;
     }
 }
@@ -427,12 +433,11 @@ class lesly extends opponent_base {
             } else {
                 this.action = "down"
             }
-                
             this.actions_cnt = [0, 0, 0];
         } 
     }
 
-    update(player_step, player_money){
+    update(player_step, player_money){ // обновление массива
         if (player_step === "up"){
             ++this.actions_cnt[0];
         } else if (player_step === "skip"){
@@ -449,29 +454,28 @@ class jackson extends opponent_base {
     constructor(){
         super(opponent_base);
         this.type = "Jackson";
-        this.down_flag = false; 
+        this.down_flag = false; // флаг понижения пользователем в текущем цикле двух ходов
         this.action = "up"; // противник начиинает игру с повышения
     }
     strategy() {
     // каждые два хода поведение противника меняется
-        if (this.step_num % 2 == 0){
+        if (this.step_num % 2 == 0){ // в зависимости от остатка номера шага на 2
             if (this.down_flag){
                 if (this.action === "up"){
                     this.action = "skip"
                 } else if (this.action === "skip" || this.action === "down") {
                     this.action = "down";
                 }
-                this.down_flag = false;
+                this.down_flag = false; // обновление текущего цикла двух ходов
             } else {
                 this.action = "up";
             }    
         }
-        console.log(this.down_flag)
     }
 
     update(player_step, player_money){
         if (player_step === "down" && !this.down_flag){
-            this.down_flag = true;
+            this.down_flag = true; // обновление флага, если пользователь понизил
         }
     }
 }

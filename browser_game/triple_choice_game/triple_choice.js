@@ -2,6 +2,7 @@
 import { game } from "../game_class.js";
 import { Chart } from "chart.js/auto";
 
+// забираем все активные поля на странице
 const start_button = document.querySelector("#new_game");
 const step_cnt = document.getElementById("step_num");
 const head_text = document.getElementById("head_text");
@@ -35,9 +36,10 @@ function checkTextSize(score, score_size_element){
 }
 
 function updateGraph(gr) {
-    /* 
-    Функция, отвечающая за создание графика и его обновление после каждого шага
-    */
+    // Функция, отвечающая за создание графика и его обновление после каждого шага
+    // внутри функции забирается поле страницы, поэтому она находится непостредственно в этом 
+    // файле 
+    // аналогичнo функции Double Choice 
     let ctx = document.querySelector("#MyChart").getContext("2d");
     const labels = gr.get_steps();
     const data = {
@@ -64,21 +66,22 @@ function updateGraph(gr) {
       data: data,
     };
     if (MyChart) {
+       // удаление старого графика
       MyChart.clear();
       MyChart.destroy();
     }
+    // создание графика с новыми данными
     MyChart = new Chart(ctx, config);
   }
 
   // Обработка отклика на кнопку "Начать игру"
 function handleStartClick() {
-    console.log("click");
+  // аналогичнo функции Double Choice 
     start_button.style.display = "none";
     response_text.style.display = "none";
     head_text.style.display = "inline";
     step_cnt.textContent = "Шаг №1";
     logs.textContent = "Игра началась!"
-    console.log(logs.textContent)
     gm = new game("tripple_choice");
     updateGraph(gm.gr);
   }
@@ -88,7 +91,10 @@ function handleStartClick() {
   // Обработка отклика на кнопки ПОВЫСИТЬ, ВОЗДЕРЖАТЬСЯ, ПОНИЗИТЬ
 
   function handleChoiceClick(event) {
-    let situation = gm.step(event.target.id);
+    // Обработка отклика на кнопки "Повысить", "Воздержаться", "Понизить"
+    // в игре происходит ход
+    let situation = gm.step(event.target.id); // возвращается сложившаяся на шаге ситуация
+    // обновление параметров игры на странице, аналогично Double Choice
     user_score.textContent = `${gm.player_money}`;
     checkTextSize(user_score, user_score_size_element);
     ai_score.textContent = `${gm.ai.amount_of_money}`;
@@ -99,7 +105,9 @@ function handleStartClick() {
       elements[i].style.background = "#d9d9d9";
     }
     document.getElementById(situation).style.background = "#bbe7bb";
+    // обновление графика
     updateGraph(gm.gr);
+    // обновление логгера
     logs.textContent +=  
     `\n Шаг №${gm.ai.get_game_cnt()}: Ваш ход - ${event.target.id}, ход противника - ${gm.ai.action}.`
   }
@@ -114,11 +122,11 @@ function handleStartClick() {
     event.preventDefault(); // предотвращает обновление страницы после отправки формы
     // получаем поле формы
     let answer = form.querySelector('[id = "strategy"]').value;
-    console.log(`ввели ${answer}`);
-    console.log(answer);
+    // вызов функции обработчика ответа пользователя, stat - bool переменная, true, если пользователь угадал, false иначе
     let stat = gm.process_answer(answer);
-    console.log(stat);
     if (stat) {
+      // если пользователь угадал
+      // появление завершающей игру страницы
       let end_page = document.getElementById("ending");
       response_text.textContent = ``;
       end_page.style.display = "block";
@@ -132,6 +140,8 @@ function handleStartClick() {
       }
       gm.end_game();
     } else {
+      // если пользователь не угадал
+      // появление надписи об ошибке и запись в логгер
       response_text.textContent = `Вы ошиблись, это не ${answer}`;
       let block = document.getElementById(`${answer}-block`);
       var select = document.getElementById("strategy");
@@ -143,29 +153,34 @@ function handleStartClick() {
   
   // при отправке формы срабатывает событие submit
   form.addEventListener("submit", handleForm);
+
   // Выдвижение таблицы со стратегиями при нажатии кнопки 
   function handleStrButton() {
+    // выдвижение поля с описаниями всех стратегий при нажатии на кнопку
     let str_container = document.getElementById("help_str_field");
     if (
-      str_container.style.transform == "translateX(450px)" ||
+      str_container.style.transform == "translateX(470px)" ||
       str_container.style.transform == ""
     ) {
       str_container.style.transform = "translateX(0px)";
     } else {
-      str_container.style.transform = "translateX(450px)";
+      str_container.style.transform = "translateX(470px)";
     }
   }
   strategies_button.addEventListener("click", handleStrButton);
   
   
   function handleMGLButton(event) {
+    // выдвижение полей с моделью, графиком и логгером происходит одинаково 
     let container = document.getElementById("graph")
+    // определение, какое событие сработало
     if (event.target.id == "model_button"){
         container = document.getElementById("model_field");
     } else if (event.target.id == "logger_button"){
       container = document.getElementById("logger")
     }
     if (
+      // сдвиг соотвествующего поля
       container.style.left == "-500px" ||
       container.style.left == ""
     ) {

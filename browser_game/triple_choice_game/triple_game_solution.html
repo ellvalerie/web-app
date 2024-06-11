@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet", href="../styles/choice_solution.css"/>
+    <title>double choice solution</title>
+  </head>
+
+    <body id = 'body'>
+        <h1 id = 'title'> Решение модели Triple Choice Model </h1>
+        <text id = 'description'>
+            Ниже представлено дерево решений игры с тройным выбором минимальной глубины.
+            По аналогии с моделью с тройным выбором, стратегию random нет смысла отдельно угадывать.
+            Потому что есть вероятность, что random подстраивается под любую из стратегий. <br> 
+            <div id="chances">Шансы рандомной стратегии в зависимости от номера шага: </div>
+            <div class = "table-container">
+              <table border="1" id="table">
+                <tr>
+                  <td>Номер шага</td>
+                  <td>Вероятность</td>
+                </tr>
+                <tbody>
+                  <tr>
+                    <td>2</td>
+                    <td>11.11%</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>3.73%</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>1.23%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </text>
+        <div class = "image-cont"> 
+          <text id = "tree-text"> Дерево решений </text>
+          <img id="solution-tree-img" src="../imgs/triple_solution.jpg" />
+          <text id = "legend">             
+            Для удобства анализа дерева решений листья отменечены синим цветом,
+            требуемые выборы пользователя - зеленым, красным и серым соотвественно. <br>
+            Представленный вариант решения не является единственным, можно привести и другие решения, в которых максимальная глубина
+            дерева будет 4 шага. <br>
+          </text>
+        </div>
+    </body>
+</html>
