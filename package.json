@@ -1,7 +1,11 @@
 {
+  "private": true,
   "dependencies": {
     "chart.js": "^4.4.2",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "webpack": "^5.92.0"
   },
-  "type": "module"
+  "devDependencies": {
+    "chart.js": "^4.4.2"
+  }
 }
