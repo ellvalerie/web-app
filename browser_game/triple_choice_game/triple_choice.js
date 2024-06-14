@@ -32,7 +32,6 @@ function checkTextSize(score, score_size_element){
     let after = Number(before.slice(0, -2)) - 12
     score_size_element.style.cssText = `font-size:${after}px;`;
   }
-  console.log(getComputedStyle(score_size_element).getPropertyValue('font-size'))
 }
 
 function updateGraph(gr) {
@@ -143,6 +142,7 @@ function handleStartClick() {
       // если пользователь не угадал
       // появление надписи об ошибке и запись в логгер
       response_text.textContent = `Вы ошиблись, это не ${answer}`;
+      logs.textContent += `\n Вы ошиблись, это не ${answer}`;
       let block = document.getElementById(`${answer}-block`);
       var select = document.getElementById("strategy");
       select.removeChild(select.querySelector(`[id="${answer}"]`));
@@ -159,12 +159,12 @@ function handleStartClick() {
     // выдвижение поля с описаниями всех стратегий при нажатии на кнопку
     let str_container = document.getElementById("help_str_field");
     if (
-      str_container.style.transform == "translateX(470px)" ||
+      str_container.style.transform == "translateX(98.7%)" || // изменение позиции блока со стратегиямим относительно страницы
       str_container.style.transform == ""
     ) {
-      str_container.style.transform = "translateX(0px)";
+      str_container.style.transform = "translateX(68.7%)";
     } else {
-      str_container.style.transform = "translateX(470px)";
+      str_container.style.transform = "translateX(98.7%)";
     }
   }
   strategies_button.addEventListener("click", handleStrButton);
@@ -181,14 +181,13 @@ function handleStartClick() {
     }
     if (
       // сдвиг соотвествующего поля
-      container.style.left == "-500px" ||
+      container.style.left == "-33%" ||
       container.style.left == ""
     ) {
-      container.style.left = "0px";
+      container.style.left = "0";
     } else {
-      container.style.left = "-500px";
+      container.style.left = "-33%";
     }
-    console.log("clicked");
   }
 
   model_button.addEventListener("click", handleMGLButton);

@@ -1,5 +1,5 @@
 import { game } from "../game_class.js";
-var Chart = require('chart.js');
+import { Chart } from "chart.js/auto";
 
 const start_button = document.querySelector("#new_game");
 const step_cnt = document.getElementById("step_num");
